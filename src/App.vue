@@ -53,7 +53,6 @@ export default {
 ## Layouts 
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
 
 :root {
@@ -66,12 +65,30 @@ export default {
   --color-seven: #efede1;
   --color-white: #ffffff;
 }
-
+@font-face {
+  font-family: "light";
+  src: url("./assets/fonts/Poppins-Light.ttf");
+}
+@font-face {
+  font-family: "regular";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "meduim";
+  src: url("./assets/fonts/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: "semibold";
+  src: url("./assets/fonts/Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "bold";
+  src: url("./assets/fonts/Poppins-Bold.ttf");
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -92,7 +109,7 @@ a {
 
 ul {
   list-style: none;
-  padding: 0px;
+  padding: 0;
 }
 p {
   margin-bottom: 0;
@@ -114,15 +131,16 @@ p {
 /* scroll bar */
 //custom var
 .text {
-  font-size: 1rem;
-  color: var(--color-text);
-  font-family: "regular";
+  font-size: 1.2rem;
+  color: var(--color-white);
+  font-family: "bold";
 }
 .parg {
   font-size: 0.8rem;
-  color: var(--color-pargraph);
+  color: var(--color-sixth);
   font-family: "regular";
   text-align: center;
+  line-height: 1.7;
 }
 
 .button {
@@ -223,16 +241,7 @@ p {
     color: var(--color-primary);
   }
 }
-.icon_filter {
-  display: flex;
-  position: absolute;
-  top: 21%;
-  right: 2%;
-  z-index: 100;
-  i {
-    color: var(--color-pargraph);
-  }
-}
+
 //form content
 .input-group {
   position: relative;
@@ -338,8 +347,4 @@ input {
     margin: 0;
   }
 }
-
-
-
-
 </style>

@@ -13,7 +13,7 @@
           <div class="col-lg-8 col-12">
             <div class="nav-link">
               <ul v-show="!mobile">
-                <router-link :to="{ name: 'Home' }" class="link-navbar">
+                <router-link :to="{ name: 'Home' }" class="link-navbar active">
                   Home</router-link
                 >
                 <router-link :to="{ name: 'About' }" class="link-navbar">
@@ -25,7 +25,7 @@
                 <router-link :to="{ name: 'Blogs' }" class="link-navbar">
                   Blogs</router-link
                 >
-                   <router-link :to="{ name: 'Contact' }" class="link-navbar">
+                <router-link :to="{ name: 'Contact' }" class="link-navbar">
                   Contact
                 </router-link>
               </ul>
@@ -40,9 +40,15 @@
         <ul v-show="mobileNav" class="mobile-nav">
           <router-link :to="{ name: 'Home' }" class="link"> Home</router-link>
           <router-link :to="{ name: 'About' }" class="link"> About</router-link>
-          <router-link :to="{ name: 'Projects' }" class="link">   Projects </router-link>
-          <router-link :to="{ name: 'Blogs' }" class="link">  Blogs  </router-link>
-          <router-link :to="{ name: 'Contact' }" class="link"> Contact</router-link>
+          <router-link :to="{ name: 'Projects' }" class="link">
+            Projects
+          </router-link>
+          <router-link :to="{ name: 'Blogs' }" class="link">
+            Blogs
+          </router-link>
+          <router-link :to="{ name: 'Contact' }" class="link">
+            Contact</router-link
+          >
         </ul>
       </transition>
     </div>
@@ -106,10 +112,25 @@ header {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-
+      width: 100%;
       ul {
         margin: 0;
         padding: 0;
+        width: 100%;
+        .link-navbar {
+          font-family: "bold";
+          font-size: 1rem;
+          text-transform: capitalize;
+          margin-right: 2%;
+          color: var(--color-sixth);
+          transition:.25s all ease-in-out;
+          &:hover {
+            color: var(--color-white);
+          }
+        }
+        .link-navbar.active {
+          color: var(--color-white);
+        }
       }
     }
   }
@@ -117,9 +138,9 @@ header {
     cursor: pointer;
     position: absolute;
     top: 32px;
-    left: 25px;
-    height: 25px;
-    width: 25px;
+    right: 25px;
+    height: 35px;
+    width: 35px;
     i {
       font-size: 30px;
       color: var(--color-primary);
@@ -137,7 +158,7 @@ header {
     height: 100%;
     background: #303030;
     top: 0;
-    left: 0;
+    right: 0;
     .link {
       padding: 15px 0;
       color: white;
@@ -150,13 +171,13 @@ header {
     transition: all 1s ease;
   }
   .mobile-icon-enter {
-    transform: translateX(-250px);
+    transform: translateX(+250px);
   }
   .mobile-icon-enter-to {
     transform: translateX(0px);
   }
   .mobile-icon-leave-to {
-    transform: translateX(-250px);
+    transform: translateX(+250px);
   }
 }
 </style>
