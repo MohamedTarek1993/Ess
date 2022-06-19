@@ -6,14 +6,14 @@
           <div class="col-lg-4 col-12">
             <div class="logo">
               <router-link class="header" :to="{ name: 'Home' }">
-                <img src="../../assets/image/logo.png" alt="logo" />
+                <img src="../../../assets/image/logo.png" alt="logo" />
               </router-link>
             </div>
           </div>
           <div class="col-lg-8 col-12">
             <div class="nav-link">
               <ul v-show="!mobile">
-                <router-link :to="{ name: 'Home' }" class="link-navbar active">
+                <router-link :to="{ name: 'Home' }" class="link-navbar">
                   Home</router-link
                 >
                 <router-link :to="{ name: 'About' }" class="link-navbar">
@@ -98,8 +98,10 @@ header {
 
   nav {
     // display: flex;
-    padding: 1% 0;
-
+    padding: 2% 0;
+    position: fixed;
+    top: 0;
+   width: 100%;
     .logo {
       align-items: center;
       img {
@@ -121,8 +123,9 @@ header {
           font-family: "bold";
           font-size: 1rem;
           text-transform: capitalize;
-          margin-right: 2%;
+          margin-right: 9%;
           color: var(--color-sixth);
+          text-decoration: none;
           transition:.25s all ease-in-out;
           &:hover {
             color: var(--color-white);

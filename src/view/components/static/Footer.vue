@@ -5,7 +5,7 @@
         <div class="col-lg-3 col-md-6 col-12">
           <div class="logo">
             <router-link :to="{ name: 'Home' }">
-            <img src="../../assets/image/logo.png" alt="" />
+            <img src="../../../assets/image/logo.png" alt="" />
             </router-link>
           </div>
           <div class="description">

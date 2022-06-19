@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 // all pages
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
-import Projects from "../views/Projects.vue";
-import Blog from "../views/Blog.vue";
-import Contact from "../views/Contact.vue";
+import Home from "../src/view/pages/Home.vue";
+import About from "../src/view/pages/About.vue";
+import Projects from "../src/view/pages/Projects.vue";
+import Blog from "../src/view/pages/Blog.vue";
+import Contact from "../src/view/pages/Contact.vue";
 // all pages
-Vue.use(VueRouter);
 const routes = [
     {
         path: "/",
@@ -34,7 +33,7 @@ const routes = [
     },
     {
         path: "/blog",
-        name: "Blog",
+        name: "Blogs",
         component: Blog,
         meta: {
             title: "Blog",
@@ -58,30 +57,17 @@ const router = createRouter({
     mode: 'html5',
     linkActiveClass: "active",
     // linkExactActiveClass: "exact-active",
-   
-  });
-  router.beforeEach((to, from, next) => {
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-      if (store.getters.isAuthenticated) {
-        next();
-        return;
+    scrollBehavior(to) {
+      if (to.hash) {
+        return {
+          // x, y are replaced with left/top to define position, but when used with an element selector (el) will be used as offset
+          el: to.hash,
+          // offset has to be set as left and top at the top level
+          left: 0,
+          top: 64,
+        };
       }
-      next("/login");
-    } else {
-      next();
-    }
-  });
-  
-  router.beforeEach((to, from, next) => {
-    if (to.matched.some((record) => record.meta.guest)) {
-      if (store.getters.isAuthenticated) {
-        next("/dashboard");
-        return;
-      }
-      next();
-    } else {
-      next();
-    }
+    },
   });
   
   export default router;
