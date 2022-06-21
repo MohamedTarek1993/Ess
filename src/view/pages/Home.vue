@@ -2,12 +2,16 @@
   <Hero />
   <pranterSuccess />
   <Service />
+  <choose-us />
+  <Projects />
 </template>
 
 <script>
 import Hero from "../components/ui/Hero.vue";
 import pranterSuccess from "../components/ui/pranterSuccess.vue";
 import Service from "../components/ui/Service.vue";
+import chooseUs from "../components/ui/chooseUs.vue";
+import Project from "../components/ui/Project.vue";
 
 
 export default {
@@ -15,7 +19,9 @@ export default {
   components: {
     Hero,
     pranterSuccess,
-    Service
+    Service,
+    chooseUs,
+    Project,
   },
 };
 </script>

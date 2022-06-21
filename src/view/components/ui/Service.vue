@@ -141,12 +141,19 @@ export default {
   }
   .swiper {
     .card {
-      padding: 3% 1%;
+      padding: 7% 1%;
       display: flex;
       justify-content: center;
       align-content: center;
       text-align: center;
       flex-direction: column;
+      background-color: transparent;
+      border: none;
+      transition: .3s all ease-in-out;
+      &:hover{
+        background-color: var(--color-white);
+        box-shadow: 0px 7px 60px rgba($color: #7A7A7A, $alpha: .16);
+      }
       .img {
         width: 50px;
         height: 50px;
@@ -157,6 +164,7 @@ export default {
         background-color: var(--color-primary);
         border-radius: 50%;
         padding: 2%;
+        margin: auto;
         img {
           width: 30px;
           height: 30px;
@@ -165,12 +173,13 @@ export default {
       h4 {
         font-family: "semibold";
         color: var(--color-primary);
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        padding: 8% 0 4%;
       }
       p {
         font-family: "regular";
         color: var(--color-fourth);
-        font-size: 1rem;
+        font-size: .7rem;
       }
     }
   }
