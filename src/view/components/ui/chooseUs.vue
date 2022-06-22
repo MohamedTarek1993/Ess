@@ -107,41 +107,7 @@ export default {
 .choose_us {
   background-color: rgba($color: #2e493a, $alpha: 0.3);
   padding: 4% 0;
-  .main-title {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-bottom: 4%;
-    span {
-      color: var(--color-primary);
-      font-size: 0.9rem;
-      font-family: "regular";
-      position: relative;
-      &::after {
-        position: absolute;
-        width: 15px;
-        height: 3px;
-        color: var(--color-primary);
-        top: 0;
-        left: 0;
-      }
-    }
-    h2 {
-      font-family: "semibold";
-      color: var(--color-primary);
-      font-size: 1.5rem;
-      padding: 1% 0;
-    }
-    p {
-      font-family: "regular";
-      color: var(--color-fourth);
-      font-size: 1rem;
-      text-align: start;
-      padding: 3% 0;
-    }
-  }
+  
   ul {
     padding-left: 0px;
     list-style-image: url(../../../assets/image/shape.png);
