@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../src/view/pages/Home.vue";
 import About from "../src/view/pages/About.vue";
 import Projects from "../src/view/pages/Projects.vue";
+import Blogs from "../src/view/pages/Blogs.vue";
 import Blog from "../src/view/pages/Blog.vue";
 import Contact from "../src/view/pages/Contact.vue";
 // all pages
@@ -32,8 +33,16 @@ const routes = [
         }
     },
     {
-        path: "/blog",
+        path: "/blogs",
         name: "Blogs",
+        component: Blogs,
+        meta: {
+            title: "Blogs",
+        }
+    },
+    {
+        path: "/blog/:id",
+        name: "Blog",
         component: Blog,
         meta: {
             title: "Blog",

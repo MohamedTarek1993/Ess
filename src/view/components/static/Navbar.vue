@@ -14,10 +14,10 @@
             <div class="nav-link">
               <ul v-show="!mobile">
                 <router-link :to="{ name: 'Home' }" class="link-navbar">
-                  Home</router-link
+                  {{$t("home")}}</router-link
                 >
                 <router-link :to="{ name: 'About' }" class="link-navbar">
-                  About</router-link
+                  {{$t("about")}}</router-link
                 >
                 <router-link :to="{ name: 'Projects' }" class="link-navbar">
                   Our Projects
@@ -29,6 +29,33 @@
                   Contact
                 </router-link>
               </ul>
+              <div class="dropdown lang">
+                <a
+                  class="btn dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-globe2"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      v-for="entry in languages"
+                      :key="entry.title"
+                      @click="changeLocale(entry.language)"
+                      :iso="entry.flag"
+                      v-bind:squared="false"
+                    >
+                      <flag :iso="entry.flag" v-bind:squared="false" />
+                      {{ entry.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -38,8 +65,8 @@
       <i class="bi bi-list"></i>
       <transition name="mobile-icon">
         <ul v-show="mobileNav" class="mobile-nav">
-          <router-link :to="{ name: 'Home' }" class="link"> Home</router-link>
-          <router-link :to="{ name: 'About' }" class="link"> About</router-link>
+          <router-link :to="{ name: 'Home' }" class="link">{{$t("home")}}</router-link>
+          <router-link :to="{ name: 'About' }" class="link"> {{$t("about")}}</router-link>
           <router-link :to="{ name: 'Projects' }" class="link">
             Projects
           </router-link>
@@ -64,11 +91,21 @@ export default {
       mobile: null,
       mobileNav: null,
       windowWidth: null,
+      setting: {},
+      profile: {},
+      auth: false,
+      languages: [
+        { flag: "us", language: "en", title: "English" },
+        { flag: "eg", language: "ar", title: "Arabic" },
+      ],
     };
   },
   created() {
     window.addEventListener("resize", this.checkScreen);
     this.checkScreen();
+    // changeLocale(locale)
+    const html = document.documentElement; // returns the html tag
+    html.setAttribute("lang", this.$i18n.locale);
   },
   methods: {
     checkScreen() {
@@ -83,13 +120,19 @@ export default {
     showMenu() {
       this.mobileNav = !this.mobileNav;
     },
+    changeLocale(locale) {
+      this.$i18n.locale = locale;
+      const html = document.documentElement; // returns the html tag
+      html.setAttribute("lang", locale);
+      localStorage.setItem("lang", locale);
+      location.reload();
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 header {
-  direction: ltr;
   background: transparent;
   // padding: 0 25px;
   z-index: 99;
@@ -101,7 +144,7 @@ header {
     padding: 2% 0;
     position: fixed;
     top: 0;
-   width: 100%;
+    width: 100%;
     .logo {
       align-items: center;
       img {
@@ -123,10 +166,10 @@ header {
           font-family: "bold";
           font-size: 1rem;
           text-transform: capitalize;
-          margin-right: 9%;
+          margin: 0 1rem;
           color: var(--color-sixth);
           text-decoration: none;
-          transition:.25s all ease-in-out;
+          transition: 0.25s all ease-in-out;
           &:hover {
             color: var(--color-white);
           }

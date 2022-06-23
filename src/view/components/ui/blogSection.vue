@@ -13,7 +13,8 @@
             v-for="(blogs, index) in BlogsSection.blogs"
             :key="index"
           >
-          <router-link class="link" to="#">
+          <!-- <router-link class="link" :to="`/blog/${blogs.id}`"> -->
+          <router-link class="link" :to="`/blog/2`">
             <div class="card">
               <div class="img">
                 <img

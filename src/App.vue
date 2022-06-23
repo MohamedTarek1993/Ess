@@ -9,6 +9,7 @@
 <script>
 import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
+require("./assets/scss/style.min.css");
 
 export default {
   name: "app",
@@ -18,6 +19,7 @@ export default {
   },
 };
 </script>
+
 
 <style lang="scss">
 /*--------------------------------------------------------------
