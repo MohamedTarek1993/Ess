@@ -133,7 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background: transparent;
+  background: var(--color-primary);
   // padding: 0 25px;
   z-index: 99;
   //   display: flex;
@@ -141,10 +141,12 @@ header {
 
   nav {
     // display: flex;
-    padding: 2% 0;
+    padding: 1% 0;
     position: fixed;
     top: 0;
     width: 100%;
+      background: var(--color-primary);
+
     .logo {
       align-items: center;
       img {

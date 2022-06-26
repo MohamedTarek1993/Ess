@@ -1,3 +1,3 @@
-module.exports={
-    puplicPath: '/ecc/'
-}
+// module.exports={
+//     puplicPath: '/ecc/'
+// }

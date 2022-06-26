@@ -1,5 +1,6 @@
 <template>
   <section>
+    <button-top />
     <Navbar />
     <router-view />
     <Footer />
@@ -7,19 +8,21 @@
 </template>
 
 <script>
+import buttonTop from "./view/components/static/buttonTop.vue";
 import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
+
 require("./assets/scss/style.min.css");
 
 export default {
   name: "app",
   components: {
+    buttonTop,
     Navbar,
     Footer,
   },
 };
 </script>
-
 
 <style lang="scss">
 /*--------------------------------------------------------------
@@ -319,7 +322,7 @@ input {
     color: var(--color-fourth);
     font-size: 1rem;
     text-align: start;
-    padding: 3% 0;
+    padding: 1% 0;
   }
 }
 
