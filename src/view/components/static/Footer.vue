@@ -67,16 +67,16 @@
                 <routerLink class="link_footer" :to="{ name: 'Home' }">Our Projects</routerLink>
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Home' }">Contact Us</routerLink>
+                <routerLink class="link_footer" :to="{ name: 'Contact' }">Contact Us</routerLink>
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Home' }">Privacy Policy</routerLink>
+                <routerLink class="link_footer" :to="{ name: 'Privacy' }">Privacy Policy</routerLink>
               </li>
-              <li><routerLink class="link_footer" :to="{ name: 'Home' }">About Us</routerLink></li>
-              <li><routerLink class="link_footer" :to="{ name: 'Home' }">Blog</routerLink></li>
-              <li><routerLink class="link_footer" :to="{ name: 'Home' }">FAQ</routerLink></li>
+              <li><routerLink class="link_footer" :to="{ name: 'About' }">About Us</routerLink></li>
+              <li><routerLink class="link_footer" :to="{ name: 'Blogs' }">Blog</routerLink></li>
+              <li><routerLink class="link_footer" :to="{ name: 'Faq' }">FAQ</routerLink></li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Home' }"
+                <routerLink class="link_footer" :to="{ name: 'Terms' }"
                   >Terms & Conditions</routerLink
                 >
               </li>

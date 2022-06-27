@@ -108,7 +108,7 @@ html {
   scroll-behavior: smooth;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--color-white);
 }
 
