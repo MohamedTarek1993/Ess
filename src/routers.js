@@ -10,6 +10,8 @@ import Faq from "../src/view/pages/Faq.vue";
 import Privacy from "../src/view/pages/Privacy.vue";
 import Terms from "../src/view/pages/Terms.vue";
 import Error from "../src/view/pages/Error.vue";
+import Project from "../src/view/pages/Project.vue";
+
 
 // all pages
 const routes = [
@@ -83,6 +85,15 @@ const routes = [
         component: Terms,
         meta: {
             title: "Terms",
+        }
+    },
+
+    {
+        path: "/project/:id",
+        name: "Project",
+        component: Project,
+        meta: {
+            title: "Project",
         }
     },
     { path: "/404", component: Error },
