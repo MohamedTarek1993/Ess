@@ -77,16 +77,37 @@ export default {
         margin-top: 8%;
         .primary {
           background-color: var(--color-white);
-          font-family: 'semibold';
+          font-family: "semibold";
           color: var(--color-primary);
           font-size: 1rem;
           padding: 1% 2%;
           width: 30%;
           border: 1px solid var(--color-sixth);
-          transition: .3s all ease-in-out;
-          &:hover{
-          background-color: var(--color-primary);
-          color: var(--color-white);
+          transition: 0.3s all ease-in-out;
+          &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1023.98px) {
+  .hero_section {
+    margin-top: 10%;
+    .content {
+      .header {
+        .text {
+          font-size: 1.5rem;
+        }
+        .discription {
+          font-size: 1.1rem;
+        }
+        .button {
+          .primary {
+                width: 52%;
+
           }
         }
       }

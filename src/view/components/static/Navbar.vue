@@ -14,19 +14,19 @@
             <div class="nav-link">
               <ul v-show="!mobile">
                 <router-link :to="{ name: 'Home' }" class="link-navbar">
-                  {{$t("home")}}</router-link
+                  {{ $t("home") }}</router-link
                 >
                 <router-link :to="{ name: 'About' }" class="link-navbar">
-                  {{$t("about")}}</router-link
+                  {{ $t("about") }}</router-link
                 >
                 <router-link :to="{ name: 'Projects' }" class="link-navbar">
-                  Our Projects
+                  {{ $t("Our_Projects") }}
                 </router-link>
                 <router-link :to="{ name: 'Blogs' }" class="link-navbar">
-                  Blogs</router-link
+                  {{ $t("blog") }}</router-link
                 >
                 <router-link :to="{ name: 'Contact' }" class="link-navbar">
-                  Contact
+                  {{ $t("contact") }}
                 </router-link>
               </ul>
               <div class="dropdown lang">
@@ -65,17 +65,25 @@
       <i class="bi bi-list"></i>
       <transition name="mobile-icon">
         <ul v-show="mobileNav" class="mobile-nav">
-          <router-link :to="{ name: 'Home' }" class="link">{{$t("home")}}</router-link>
-          <router-link :to="{ name: 'About' }" class="link"> {{$t("about")}}</router-link>
+         <span class="close">
+            <i class="bi bi-x"></i>
+          </span>
+          <router-link :to="{ name: 'Home' }" class="link">{{
+            $t("home")
+          }}</router-link>
+          <router-link :to="{ name: 'About' }" class="link">
+            {{ $t("about") }}</router-link
+          >
           <router-link :to="{ name: 'Projects' }" class="link">
-            Projects
+            {{ $t("Our_Projects") }}
           </router-link>
           <router-link :to="{ name: 'Blogs' }" class="link">
-            Blogs
+            {{ $t("blog") }}
           </router-link>
           <router-link :to="{ name: 'Contact' }" class="link">
-            Contact</router-link
+            {{ $t("contact") }}</router-link
           >
+         
         </ul>
       </transition>
     </div>
@@ -95,8 +103,8 @@ export default {
       profile: {},
       auth: false,
       languages: [
-        { flag: "us", language: "en", title: "English" },
-        { flag: "eg", language: "ar", title: "Arabic" },
+        { flag: "us", language: "en", title: "En" },
+        { flag: "eg", language: "ar", title: "Ar" },
       ],
     };
   },
@@ -145,13 +153,13 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-      background: var(--color-primary);
+    background: var(--color-primary);
 
     .logo {
       align-items: center;
       img {
-        width: 100px;
-        height: 60px;
+        width: 130px;
+        height: 52px;
       }
     }
     .nav-link {
@@ -181,6 +189,41 @@ header {
         }
       }
     }
+    .dropdown {
+      .dropdown-toggle {
+        border: 1px solid var(--color-white);
+        border-radius: 5px;
+        transition: 0.25s all ease-in-out;
+        &:after {
+          color: var(--color-white);
+          margin-right: 22%;
+          transition: 0.25s all ease-in-out;
+        }
+        &:hover {
+          background: var(--color-white);
+          &:after {
+            color: var(--color-primary);
+          }
+          i {
+            color: var(--color-primary);
+          }
+        }
+        i {
+          color: white;
+          transition: 0.25s all ease-in-out;
+        }
+      }
+      .dropdown-menu {
+        li {
+          cursor: pointer;
+          .dropdown-item {
+            font-family: "regular";
+            color: var(--color-secound);
+            text-align: center;
+          }
+        }
+      }
+    }
   }
   .mobile-menu {
     cursor: pointer;
@@ -191,8 +234,8 @@ header {
     width: 35px;
     i {
       font-size: 30px;
-      color: var(--color-primary);
-      border: 1px solid var(--color-secound);
+      color: var(--color-white);
+      border: 1px solid var(--color-white);
       border-radius: 8px;
     }
   }
@@ -204,12 +247,18 @@ header {
     flex-direction: column;
     position: fixed;
     height: 100%;
-    background: #303030;
+    background: rgba($color: #18261e, $alpha: 0.88);
     top: 0;
     right: 0;
     .link {
       padding: 15px 0;
       color: white;
+    }
+    .close {
+      right: 0;
+      left: 20px;
+      i {
+      }
     }
   }
 
@@ -218,7 +267,7 @@ header {
   .mobile-icon-leave-active {
     transition: all 1s ease;
   }
-  .mobile-icon-enter {
+  .mobile-icon-enter ,.mobile-icon-leave {
     transform: translateX(+250px);
   }
   .mobile-icon-enter-to {

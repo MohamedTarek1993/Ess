@@ -14,7 +14,11 @@
           clickable: true,
         }"
         :breakpoints="{
-          '640': {
+          '320': {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          '425': {
             slidesPerView: 2,
             spaceBetween: 20,
           },
@@ -48,7 +52,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper-bundle.css";
 
 export default {
-  name:'pranterSuccess',
+  name: "pranterSuccess",
   components: {
     Swiper,
     SwiperSlide,

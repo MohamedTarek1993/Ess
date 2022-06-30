@@ -11,8 +11,8 @@
 import buttonTop from "./view/components/static/buttonTop.vue";
 import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
-
 require("./assets/scss/style.min.css");
+
 
 export default {
   name: "app",
@@ -72,23 +72,24 @@ export default {
 }
 @font-face {
   font-family: "light";
-  src: url("./assets/fonts/Poppins-Light.ttf");
+  src: url("./assets/fonts/alfont_com_Somar-Light.otf");
 }
 @font-face {
   font-family: "regular";
-  src: url("./assets/fonts/Poppins-Regular.ttf");
+  src: url("./assets/fonts/alfont_com_Somar-Regular.otf");
+}
+
+@font-face {
+  font-family: "semibold";
+  src: url("./assets/fonts/alfont_com_Somar-SemiBold.otf");
 }
 @font-face {
   font-family: "meduim";
-  src: url("./assets/fonts/Poppins-Medium.ttf");
-}
-@font-face {
-  font-family: "semibold";
-  src: url("./assets/fonts/Poppins-SemiBold.ttf");
+  src: url("./assets/fonts/Somar-Medium.otf");
 }
 @font-face {
   font-family: "bold";
-  src: url("./assets/fonts/Poppins-Bold.ttf");
+  src: url("./assets/fonts/alfont_com_Somar-Bold.otf");
 }
 * {
   -webkit-box-sizing: border-box;
@@ -127,10 +128,10 @@ p {
   background: var(--color-primary);
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--color-pargraph);
+  background: var(--color-secound);
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text);
+  background: var(--color-fourth);
 }
 
 /* scroll bar */
@@ -194,35 +195,40 @@ p {
     right: 0.3rem;
     top: 58%;
   }
+  .form-control {
+    border-radius: 2px;
+    padding-right: 6%;
+    background-color: transparent;
+    color: #f8f8f9;
+    font-family: "regular";
+    &:focus {
+      box-shadow: none !important;
+      border-color: var(--color-white);
+      border-bottom: 1px solid var(--color-secound);
+    }
+    &::placeholder {
+      color: var(--color-secound) !important;
+      font-family: "regular" !important;
+      font-size: 0.9rem;
+    }
+  }
+  textarea {
+    height: 200px;
+    width: 100%;
+    border: 1px solid 1px solid #ced4da;
+  }
+  textarea.form-control {
+    padding-right: 2%;
+        border: 1px solid 1px solid #ced4da;
+
+
+  }
 }
 .form-label {
   width: 100%;
   font-size: 1rem;
   color: var(--color-text);
   font-family: "regular";
-}
-
-.form-control {
-  border-radius: 2px;
-  padding-right: 6%;
-  background-color: transparent;
-  color: var(--color-pargraph);
-  font-family: "regular";
-  &:focus {
-    box-shadow: none !important;
-    border-color: var(--color-pargraph) !important;
-  }
-  &::placeholder {
-    color: var(--color-text) !important;
-    font-family: "regular" !important;
-    font-size: 0.9rem;
-  }
-}
-textarea {
-  height: 100px;
-}
-textarea.form-control {
-  padding-right: 2%;
 }
 
 .form-select {

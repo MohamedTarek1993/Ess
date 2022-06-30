@@ -223,4 +223,12 @@ export default {
     }
   }
 }
+@media (max-width: 1023.98px) {
+  
+ 
+  .testmonlies .map img {
+    display: none;
+  }
+}
+
 </style>

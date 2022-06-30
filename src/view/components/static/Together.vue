@@ -2,7 +2,7 @@
    <section class="together">
     <div class="container">
       <div class="row justify-content-center align-items-center text-center">
-        <div class="col-8">
+        <div class="col-lg-8 col-sm-12">
           <div class="logo">
             <img src="../../../assets/image/logo2.webp" alt="" />
           </div>
@@ -33,7 +33,10 @@ export default {
   padding: 3% 0;
   margin: 4% 0;
   .logo {
+    
     img {
+      width: 150px;
+      height: 50px;
     }
   }
   h2 {
@@ -50,12 +53,31 @@ export default {
     color: var(--color-third);
     font-family: "regular";
     font-size: 1rem;
+    margin-top: 2%;
   }
   .button {
     justify-content: center;
     .btn {
       padding: 2%;
     }
+  }
+}
+@media (max-width: 1023.98px) {
+  
+  .together {
+    .button .btn .logo {
+      margin-bottom: 4%;
+      img {
+        width: 169px;
+        height: 65px;
+      }
+    }
+    .button  {
+      padding: 1%;
+      .btn{
+        width: 30%;
+      }
+    }       
   }
 }
 </style>

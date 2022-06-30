@@ -21,7 +21,7 @@
           <div class="card_box">
             <div class="row">
               <div
-                class="col-lg-6 col-12"
+                class="col-lg-6 col-md-6 col-12"
                 v-for="(WhyCard, index) in why.WhyCard"
                 :key="index"
               >
@@ -107,15 +107,15 @@ export default {
 .choose_us {
   background-color: rgba($color: #2e493a, $alpha: 0.3);
   padding: 4% 0;
-  
+
   ul {
     padding-left: 0px;
     list-style-image: url(../../../assets/image/shape.png);
-    li{
+    li {
       font-family: "meduim";
-        color: var(--color-primary);
-        font-size: .8rem;
-        margin-bottom: 2%;
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      margin-bottom: 2%;
     }
   }
   .button {
@@ -129,18 +129,18 @@ export default {
       font-family: "semibold";
       color: var(--color-white);
       font-size: 1rem;
-      padding: 3% 2%;
+      padding: 2% 2%;
       width: 40%;
       border: 1px solid var(--color-sixth);
-      border-radius: 30px;
-      border-top-left-radius: 0px;
+      border-radius: 0px;
       transition: 0.3s all ease-in-out;
       text-decoration: none;
       text-align: center;
       &:hover {
         background-color: var(--color-white);
         color: var(--color-primary);
-        border-radius: 0px;
+        border-radius: 30px;
+        border-top-left-radius: 0px;
       }
     }
   }
@@ -178,6 +178,15 @@ export default {
         text-align: start;
       }
     }
+  }
+}
+@media (max-width: 1023.98px) {
+  
+  .choose_us .button .secondary {
+    padding: 1%;
+  }
+  .choose_us .card_box {
+    margin-top: 4%;
   }
 }
 </style>

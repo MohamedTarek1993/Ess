@@ -1,2 +1,2 @@
-body:lang(ar){direction:rtl}body:lang(en){direction:ltr}
+body:lang(ar){direction:rtl}body:lang(ar) .about_section .boxes .box .text h6{padding-right:2%}body:lang(ar) .project .contact{text-align:start}body:lang(ar) .project .contact{justify-content:flex-start}body:lang(ar) header .mobile-menu{left:25px;right:89%}body:lang(en){direction:ltr}
 /*# sourceMappingURL=style.min.css.map */

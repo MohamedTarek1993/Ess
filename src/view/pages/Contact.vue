@@ -18,7 +18,7 @@
 
             <h4>{{ $t("Mail US") }}</h4>
             <a
-              v-for="(email, index) in emails"
+              v-for="(email, index) in Sitting.emails"
               :key="index"
               :href="'mailto:' + email"
               >{{ email }}</a
@@ -26,29 +26,24 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-12">
-           <div class="card">
+          <div class="card">
             <div class="img">
               <img src="../../assets/image/contact2.webp" alt="contact" />
             </div>
 
             <h4>{{ $t("Our Location ") }}</h4>
-            <a
-              v-for="(email, index) in emails"
-              :key="index"
-              :href="'mailto:' + email"
-              >{{ email }}</a
-            >
+           <p>{{Sitting.address}}</p>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-12">
-             <div class="card">
+          <div class="card">
             <div class="img">
               <img src="../../assets/image/contact3.webp" alt="contact" />
             </div>
 
             <h4>{{ $t("Call Us") }}</h4>
             <a
-              v-for="(number, index) in numbers"
+              v-for="(number, index) in Sitting.numbers"
               :key="index"
               :href="'mailto:' + number"
               >{{ number }}</a
@@ -58,7 +53,9 @@
       </div>
     </div>
   </section>
+  <div class="container">
   <Form />
+  </div>
 </template>
 
 <script>
@@ -77,7 +74,8 @@ export default {
         address:
           " Baghdad, Al Karadah st, Dimondmall, 6th Floor, Business avenue, Office No C-9",
         emails: ["Haidar.Ghazi@Essiraq.com", "Haidar.Ghazi@Essiraq.com"],
-        numbers: ["+964-7726-100-178 , +964-7726-100-178"],
+        numbers: ["+964-7726-100-178" , "+964-7726-100-178"],
+
       },
     };
   },
@@ -94,5 +92,48 @@ export default {
     padding: 0;
   }
 }
-
+.information {
+  padding: 5% 0;
+  .card {
+    padding: 10% 4% 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($color: #2E493A, $alpha: 0.04);
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    .img {
+      background: var(--color-primary);
+      border-radius: 50%;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      top: -17%;
+      img { 
+        width: 55%;
+        height: 48%;
+      }
+    }
+    h4{
+      font-family: 'semibold';
+      color: var(--color-secound);
+      padding: 4% 0;
+      font-size: 1.3rem;
+    }
+    p,a{
+       font-family: 'regular';
+      color: var(--color-fourth);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 2%;
+            text-align: center;
+            line-height: 1.8;
+    }
+  }
+}
 </style>

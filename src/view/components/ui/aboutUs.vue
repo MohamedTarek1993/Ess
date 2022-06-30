@@ -81,9 +81,9 @@ export default {
   margin-top: 10%;
   .main-title-center {
     padding: 0 10%;
-    p{
-        text-align: center;
-        padding: 0;
+    p {
+      text-align: center;
+      padding: 0;
     }
   }
   .main-title {
@@ -133,24 +133,23 @@ export default {
       }
     }
   }
-  .img{
+  .img {
     height: 350px;
-    img{
-        width: 100%;
-        height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }
 //responsive
 
-@media (max-width: 1200px){
-
-}
-@media (max-width: 1023.98px){
-
-}
-@media only screen and (max-width: 767.98px){
-
+@media (max-width: 1023.98px) {
+  .about_section {
+    margin-top: 15%;
+    .boxes .box .icon {
+      width: 40px;
+    }
+  }
 }
 </style>
 

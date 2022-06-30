@@ -1,9 +1,22 @@
 // lang ar
-body:lang(ar){
-    direction: rtl;
+body:lang(ar) {
+  direction: rtl;
+  .about_section .boxes .box .text h6 {
+    padding-right: 2%;
+  }
+  .project .contact {
+    text-align: start;
+  }
+  .project .contact {
+    justify-content: flex-start;
+  }
+  header .mobile-menu {
+    left: 25px;
+    right: 89%;
+  }
 }
 
 // lang en
-body:lang(en){
-    direction: ltr;
+body:lang(en) {
+  direction: ltr;
 }

@@ -1,6 +1,10 @@
 <template>
+ <div class="main-title-center">
+    <h2>{{ $t("form_title") }}</h2>
+    <p>{{ $t("form_text") }}</p>
+  </div>
   <form class="contact_us">
-    <div class="input row">
+    <div class="input-group row">
       <div class="col-lg-6 col-12">
         <input
           type="text"
@@ -20,7 +24,7 @@
       </div>
     </div>
 
-    <div class="input row">
+    <div class="input-group row">
       <div class="col-lg-6 col-12">
         <input
           type="email"
@@ -40,11 +44,14 @@
       </div>
     </div>
 
-    <div class="input row">
+    <div class="input-group row">
       <div class="col-12 col-lg-12">
-      <textarea type="text" :placeholder="$t('Tell us about yourself ')" v-model="textarea" />
+      <textarea type="text" class="form-control" :placeholder="$t('Tell us about yourself ')" v-model="textarea" />
 
       </div>
+    </div>
+    <div class="button">
+      <button class="btn secondary">{{ $t("Contact_Us") }}</button>
     </div>
   </form>
 </template>
@@ -65,5 +72,24 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.main-title-center {
+  margin-top: 10%;
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    padding: 0;
+  }
+}
+.button{
+  justify-content: center;
+      margin-top: 2%;
+.btn{
+  padding: 1%;
+  width: 24%;
+
+}
+}
+
 </style>

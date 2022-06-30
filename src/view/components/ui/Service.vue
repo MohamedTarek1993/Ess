@@ -6,7 +6,7 @@
         <h2>{{ ServicesSection.title }}</h2>
         <p>{{ ServicesSection.text }}</p>
       </div>
-      <swiper
+      <swiper   
         :slidesPerView="4"
         :spaceBetween="10"
         :loop="true"
