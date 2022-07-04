@@ -14,6 +14,45 @@ body:lang(ar) {
     left: 25px;
     right: 89%;
   }
+  .project_section {
+    padding: 5% 0;
+   
+    .tab-content {
+      .box-1 {
+        &::before {
+          content: "";
+          transform: translate(550px, 300px);
+        }
+        &:hover {
+          &::before {
+            transform: translate(21px, 0px);
+          }
+        }
+        .caption-1 {
+          &:hover {
+            h3 {
+                  transform: translate(-10px, 22px);
+             padding-inline-start: 5%;
+            }
+            p{
+                 transform: translate(-10px, 37px);
+                         padding: 0 5%;
+  
+            }
+          }
+          h3
+           {
+            transform: translate(200px, -200px);
+           
+          }
+           p {
+            transform: translate(260px, -260px);
+         
+          }
+        }
+      }
+    }
+  }
 }
 
 // lang en

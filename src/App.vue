@@ -72,24 +72,24 @@ export default {
 }
 @font-face {
   font-family: "light";
-  src: url("./assets/fonts/alfont_com_Somar-Light.otf");
+  src: url("./assets/fonts/Cairo-Light.ttf");
 }
 @font-face {
   font-family: "regular";
-  src: url("./assets/fonts/alfont_com_Somar-Regular.otf");
+  src: url("./assets/fonts/Cairo-Regular.ttf");
 }
 
 @font-face {
   font-family: "semibold";
-  src: url("./assets/fonts/alfont_com_Somar-SemiBold.otf");
+  src: url("./assets/fonts/Cairo-SemiBold.ttf");
 }
 @font-face {
   font-family: "meduim";
-  src: url("./assets/fonts/Somar-Medium.otf");
+  src: url("./assets/fonts/Cairo-Medium.ttf");
 }
 @font-face {
   font-family: "bold";
-  src: url("./assets/fonts/alfont_com_Somar-Bold.otf");
+  src: url("./assets/fonts/Cairo-Bold.ttf");
 }
 * {
   -webkit-box-sizing: border-box;
