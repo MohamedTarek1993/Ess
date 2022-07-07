@@ -150,7 +150,6 @@ header {
   nav {
     // display: flex;
     padding: 1% 0;
-    position: fixed;
     top: 0;
     width: 100%;
     background: var(--color-primary);
@@ -168,6 +167,7 @@ header {
       justify-content: flex-start;
       align-items: center;
       width: 100%;
+      text-transform: capitalize;  
       ul {
         margin: 0;
         padding: 0;
@@ -253,6 +253,7 @@ header {
     .link {
       padding: 15px 0;
       color: white;
+      text-transform: capitalize;
     }
     .close {
       right: 0;

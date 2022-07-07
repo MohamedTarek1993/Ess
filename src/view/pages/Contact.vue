@@ -10,7 +10,7 @@
   <section class="information">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-6 col-12">
+        <div class="col-lg-4 col-md-4 col-12">
           <div class="card">
             <div class="img">
               <img src="../../assets/image/contact1.webp" alt="contact" />
@@ -25,17 +25,17 @@
             >
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-12">
+        <div class="col-lg-4 col-md-4 col-12">
           <div class="card">
             <div class="img">
               <img src="../../assets/image/contact2.webp" alt="contact" />
             </div>
 
             <h4>{{ $t("Our Location ") }}</h4>
-           <p>{{Sitting.address}}</p>
+            <p>{{ Sitting.address }}</p>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-12">
+        <div class="col-lg-4 col-md-4 col-12">
           <div class="card">
             <div class="img">
               <img src="../../assets/image/contact3.webp" alt="contact" />
@@ -54,7 +54,7 @@
     </div>
   </section>
   <div class="container">
-  <Form />
+    <Form />
   </div>
 </template>
 
@@ -74,8 +74,7 @@ export default {
         address:
           " Baghdad, Al Karadah st, Dimondmall, 6th Floor, Business avenue, Office No C-9",
         emails: ["Haidar.Ghazi@Essiraq.com", "Haidar.Ghazi@Essiraq.com"],
-        numbers: ["+964-7726-100-178" , "+964-7726-100-178"],
-
+        numbers: ["+964-7726-100-178", "+964-7726-100-178"],
       },
     };
   },
@@ -99,7 +98,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba($color: #2E493A, $alpha: 0.04);
+    background: rgba($color: #2e493a, $alpha: 0.04);
     border: none;
     border-radius: 10px;
     position: relative;
@@ -114,26 +113,43 @@ export default {
       text-align: center;
       position: absolute;
       top: -17%;
-      img { 
+      img {
         width: 55%;
         height: 48%;
       }
     }
-    h4{
-      font-family: 'semibold';
+    h4 {
+      font-family: "semibold";
       color: var(--color-secound);
       padding: 4% 0;
       font-size: 1.3rem;
     }
-    p,a{
-       font-family: 'regular';
+    p,
+    a {
+      font-family: "regular";
       color: var(--color-fourth);
-            font-size: 1rem;
-            display: block;
-            margin-bottom: 2%;
-            text-align: center;
-            line-height: 1.8;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 2%;
+      text-align: center;
+      line-height: 1.8;
     }
+  }
+}
+@media (max-width: 768.98px) {
+  .information .card {
+    padding: 17% 4% 5%;
+  }
+  .input-group .form-control {
+    margin-bottom: 4%;
+  }
+}
+@media (max-width: 425.98px) {
+  .main-title-center h2 {
+    font-size: 1.2rem;
+  }
+  .main-title-center p {
+    font-size: 1rem;
   }
 }
 </style>

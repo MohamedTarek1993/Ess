@@ -2,7 +2,7 @@
   <section class="team_section">
     <div class="container">
       <div class="main-title-center">
-        <span>Our Team</span>
+        <span>{{$t("Our Team")}}</span>
         <h2>{{ TeamSection.title }}</h2>
         <p>{{ TeamSection.text }}</p>
       </div>
@@ -256,6 +256,12 @@ export default {
         }
       }
     }
+  }
+}
+@media (max-width: 1023.98px){
+  .team_section .swiper .card .img{
+      width: 216px;
+    height: 267px
   }
 }
 </style>

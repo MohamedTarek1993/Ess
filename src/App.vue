@@ -13,7 +13,6 @@ import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
 require("./assets/scss/style.min.css");
 
-
 export default {
   name: "app",
   components: {
@@ -219,9 +218,7 @@ p {
   }
   textarea.form-control {
     padding-right: 2%;
-        border: 1px solid 1px solid #ced4da;
-
-
+    border: 1px solid 1px solid #ced4da;
   }
 }
 .form-label {
@@ -303,30 +300,32 @@ input {
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 4%;
-  span {
+  h6 {
     color: var(--color-primary);
     font-size: 0.9rem;
     font-family: "regular";
     position: relative;
     &::after {
+      content: "";
       position: absolute;
-      width: 15px;
-      height: 3px;
+      width: 25px;
+      height: 2px;
       color: var(--color-primary);
-      top: 0;
+      background: var(--color-primary);
+      bottom: -4px;
       left: 0;
     }
   }
   h2 {
     font-family: "semibold";
     color: var(--color-primary);
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     padding: 1% 0;
   }
   p {
     font-family: "regular";
     color: var(--color-fourth);
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: start;
     padding: 1% 0;
   }
@@ -339,32 +338,34 @@ input {
   align-items: center;
   flex-direction: column;
   margin-bottom: 4%;
-  span {
+  h6 {
     color: var(--color-primary);
     font-size: 0.9rem;
     font-family: "regular";
     position: relative;
     &::after {
+      content: "";
       position: absolute;
       width: 15px;
-      height: 3px;
-      color: var(--color-primary);
-      top: 0;
+      height: 2px;
+  background: var(--color-primary);
+  color: var(--color-primary);
+      bottom: -4px;
       left: 0;
     }
   }
   h2 {
     font-family: "semibold";
     color: var(--color-primary);
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     padding: 1% 0;
   }
   p {
     font-family: "regular";
     color: var(--color-fourth);
-    font-size: 1rem;
+    font-size: 1.4rem;
     text-align: start;
-    padding: 3% 0;
+    padding: 1% 0;
   }
 }
 .button {
@@ -379,6 +380,25 @@ input {
     color: var(--color-white);
     font-size: 1rem;
     padding: 3% 2%;
+    width: 50%;
+    border: 1px solid var(--color-sixth);
+    border-radius: 0px;
+    transition: 0.3s all ease-in-out;
+    text-decoration: none;
+    text-align: center;
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border-radius: 30px;
+      border-top-left-radius: 0px;
+    }
+  }
+  .primary {
+    background-color: var(--color-white);
+    font-family: "semibold";
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    padding: 3% 2%;
     width: 40%;
     border: 1px solid var(--color-sixth);
     border-radius: 0px;
@@ -390,6 +410,13 @@ input {
       color: var(--color-primary);
       border-radius: 30px;
       border-top-left-radius: 0px;
+    }
+  }
+}
+@media (max-width: 375.98px) {
+  .button {
+    .secondary {
+      width: 60%;
     }
   }
 }

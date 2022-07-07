@@ -95,7 +95,6 @@ export default {
 }
 @media (max-width: 1023.98px) {
   .hero_section {
-    margin-top: 10%;
     .content {
       .header {
         .text {
@@ -106,10 +105,23 @@ export default {
         }
         .button {
           .primary {
-                width: 52%;
-
+            width: 52%;
           }
         }
+      }
+    }
+  }
+}
+@media (max-width: 425.98px) {
+  .hero_section {
+    height: auto;
+    .content .header {
+      padding: 2% 0;
+      .text {
+        font-size: 1.3rem;
+      }
+      .discription {
+        font-size: 0.8rem;
       }
     }
   }

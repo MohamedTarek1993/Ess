@@ -91,5 +91,13 @@ export default {
 
 }
 }
+@media (max-width: 768.98px) {
+  .input-group .form-control{
+  margin-bottom: 4%;
+}
+.button .btn{
+width: 50%;
+}
+}
 
 </style>

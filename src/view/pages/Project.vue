@@ -45,6 +45,10 @@
           clickable: true,
         }"
         :breakpoints="{
+          '375': {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
           '640': {
             slidesPerView: 2,
             spaceBetween: 20,
@@ -124,8 +128,7 @@
           </div>
         </div>
       </div>
-  <Together />
-
+      <Together />
     </div>
   </section>
 </template>
@@ -144,8 +147,8 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    Together
-},
+    Together,
+  },
   data() {
     return {
       DetailsProjects: {
@@ -185,7 +188,7 @@ export default {
 
 <style lang="scss" scoped>
 .single_project {
-  margin-top: 10%;
+  margin-top: 3%;
   .page-title {
     padding: 3% 1%;
     background: rgba($color: #2e493a, $alpha: 0.03);
@@ -285,15 +288,15 @@ export default {
         padding: 0;
         margin: 0;
         li {
-            color: var(--color-fourth);
-        font-family: "regular";
-        font-size: 1.2rem;
-        margin-bottom: 2% ;
+          color: var(--color-fourth);
+          font-family: "regular";
+          font-size: 1.2rem;
+          margin-bottom: 2%;
           span {
-               color: var(--color-secound);
-        font-family: "regular";
-        font-size: 1.2rem;
-        margin-bottom: 2% ;
+            color: var(--color-secound);
+            font-family: "regular";
+            font-size: 1.2rem;
+            margin-bottom: 2%;
           }
         }
       }
@@ -308,6 +311,30 @@ export default {
         height: 100%;
       }
     }
+  }
+}
+@media (max-width: 768.98px) {
+  .single_project .lower_content .ditals_img {
+    width: 70%;
+    height: 330px;
+  }
+}
+@media (max-width: 425.98px) {
+  .single_project .lower_content .card_box {
+    box-shadow: unset;
+        width: 94%;
+  }
+  .single_project .lower_content .card_box ul li{
+font-size: 1rem;
+  }
+  .single_project .lower_content .card_box ul li span{
+font-size: .9rem;
+  }
+  .single_project .upper_content .img {
+    height: 300px;
+  }
+  .single_project .upper_content h1{
+font-size: 1.3rem;
   }
 }
 </style>

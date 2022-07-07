@@ -2,7 +2,7 @@
   <section class="project_section">
     <div class="container">
       <div class="main-title-center">
-        <span>Projects</span>
+        <h6>{{$t("Projects")}}</h6>
         <h2>{{ ProjectsSection.title }}</h2>
         <p>{{ ProjectsSection.text }}</p>
       </div>
@@ -57,6 +57,9 @@
           </div>
         </div>
       </div>
+       <div class="button">
+            <router-link class="secondary btn"  :to="{ name: 'Projects' }">{{$t("VIEW More")}}</router-link>
+          </div>
     </div>
   </section>
 </template>
@@ -202,42 +205,10 @@ export default {
           position: relative;
           overflow: hidden;
           display: flex;
-          margin-bottom: 4%;
+          margin: 1%;
                   width: 48%;
 
-          &:first-child {
-            .img {
-              height: 400px;
-              img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-            }
-          }
-            &:nth-child(2) {
-            .img {
-              height: 300px;
-              img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-            }
-          }
-            &:nth-child(4) {
-            .img {
-              height: 400px;
-              img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-            }
-          }
+         
           &::before {
             content: "";
             top: 0;
@@ -252,7 +223,7 @@ export default {
           }
           &:hover {
             &::before {
-              transform: translate(-22px, 0px);
+              transform: translate(0px, 0px);
             }
           }
           .caption-1 {
@@ -303,6 +274,16 @@ export default {
             }
           }
         }
+    }
+  }
+  .button{
+      justify-content: center;
+    margin: 3% 0;
+    .btn{
+      padding: 1%;
+          width: 32%;
+
+
     }
   }
 }

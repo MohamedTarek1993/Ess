@@ -2,7 +2,7 @@
   <section class="blog_section">
     <div class="container">
       <div class="main-title-center">
-        <span> Blog</span>
+        <h6>{{$t("Blog")}}</h6>
         <h2>{{ BlogsSection.title }}</h2>
         <p>{{ BlogsSection.text }}</p>
       </div>
@@ -31,7 +31,7 @@
       </div>
       <div class="button">
         <router-link class="btn secondary" :to="{ name: 'Blogs' }">
-          VIEW More</router-link
+          {{$t("VIEW More")}}</router-link
         >
       </div>
     </div>
@@ -77,6 +77,12 @@ export default {
 
 <style lang="scss" scoped>
 .blog_section {
+  .main-title-center{
+   p{
+    text-align: center;
+    padding: 1% 5%;
+   }
+  }
   .boxes {
     .card {
       border: none;
@@ -88,7 +94,7 @@ export default {
         transform: scale(1.03);
       }
       .img {
-        height: 18.875rem;
+        height: 16.875rem;
         img {
           width: 100%;
           height: 100%;
@@ -107,7 +113,13 @@ export default {
       p {
         color: var(--color-fourth);
         font-family: "regular";
-        font-size:.71rem;
+        font-size:1rem;
+        line-height: 1.5;
+         display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
       }
     }
   }

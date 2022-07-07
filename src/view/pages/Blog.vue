@@ -117,4 +117,7 @@ text-align: center;
     }
   }
 }
+@media (max-width: 425.98px) {
+  
+}
 </style>

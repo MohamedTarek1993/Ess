@@ -2,7 +2,7 @@
   <section class="service_section">
     <div class="container">
       <div class="main_heading">
-        <span>Services</span>
+        <h6>{{$t("Services")}}</h6>
         <h2>{{ ServicesSection.title }}</h2>
         <p>{{ ServicesSection.text }}</p>
       </div>
@@ -111,20 +111,7 @@ export default {
     align-items: center;
     flex-direction: column;
     margin-bottom: 4%;
-    span {
-      color: var(--color-primary);
-      font-size: 0.9rem;
-      font-family: "regular";
-      position: relative;
-      &::after {
-        position: absolute;
-        width: 15px;
-        height: 3px;
-        color: var(--color-primary);
-        top: 0;
-        left: 0;
-      }
-    }
+  
     h2 {
       font-family: "semibold";
       color: var(--color-primary);
@@ -173,13 +160,13 @@ export default {
       h4 {
         font-family: "semibold";
         color: var(--color-primary);
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         padding: 8% 0 4%;
       }
       p {
         font-family: "regular";
         color: var(--color-fourth);
-        font-size: .7rem;
+        font-size: 1rem;
       }
     }
   }

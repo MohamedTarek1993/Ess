@@ -36,6 +36,21 @@ const i18n = createI18n({
   messages: loadLocaleMessages(), // set locale messages
 });
 
+// const router = new VueRouter({
+//   mode: "history",
+//   routes: routes,
+//   scrollBehavior: function (to, from, savedPosition) {
+//     if (to.hash) {
+//       return {
+//         selector: to.hash,
+//       };
+//     } else if (savedPosition) {
+//       return savedPosition;
+//     }
+//     return { x: 0, y: 0 };
+//   },
+// });
+
 const app = createApp(App);
 app.use(router);
 app.use(i18n);

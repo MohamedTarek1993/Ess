@@ -1,19 +1,23 @@
 <template>
-   <section class="together">
+  <section class="together">
     <div class="container">
       <div class="row justify-content-center align-items-center text-center">
         <div class="col-lg-8 col-sm-12">
           <div class="logo">
             <img src="../../../assets/image/logo2.webp" alt="" />
           </div>
-          <h2>Let's Build Something Genius Together</h2>
-          <p>You Can Make You Appointment For Any Request Online Now</p>
+          <h2>{{ $t("Let's Build Something Genius Together") }}</h2>
+          <p>
+            {{ $t("You Can Make You Appointment For Any Request Online Now") }}
+          </p>
           <div class="button">
-            <router-link :to="{ name: 'Contact' }" class="secondary btn"
-              >contact us</router-link
-            >
+            <router-link :to="{ name: 'Contact' }" class="secondary btn">{{
+              $t("Contact_Us")
+            }}</router-link>
           </div>
-          <span> <strong>Or simply deal</strong> : +964-7726-100-178 </span>
+          <span>
+            <strong>{{ $t("Or simply deal") }}</strong> : {{ together.text }}
+          </span>
         </div>
       </div>
     </div>
@@ -22,9 +26,15 @@
 
 <script>
 export default {
-    name:'Together',
-
-}
+  name: "Together",
+  data() {
+    return {
+      together: {
+        text: " +964-7726-100-178",
+      },
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,10 +43,9 @@ export default {
   padding: 3% 0;
   margin: 4% 0;
   .logo {
-    
     img {
-      width: 150px;
-      height: 50px;
+      width: 160px;
+      height: 85px;
     }
   }
   h2 {
@@ -49,7 +58,7 @@ export default {
     font-family: "regular";
     font-size: 1.3rem;
   }
-  span{
+  span {
     color: var(--color-third);
     font-family: "regular";
     font-size: 1rem;
@@ -57,13 +66,14 @@ export default {
   }
   .button {
     justify-content: center;
+    margin: 3% 0;
     .btn {
       padding: 2%;
     }
   }
 }
+
 @media (max-width: 1023.98px) {
-  
   .together {
     .button .btn .logo {
       margin-bottom: 4%;
@@ -72,12 +82,23 @@ export default {
         height: 65px;
       }
     }
-    .button  {
+    .button {
       padding: 1%;
-      .btn{
+      .btn {
         width: 30%;
       }
-    }       
+    }
   }
+}
+@media (max-width: 425.98px) {
+  .together .button .btn {
+    width: 50%;
+  }
+  .together h2 {
+    font-size: 1.4rem;
+  }
+   .together p {
+font-size: 1.2rem;
+   }
 }
 </style>

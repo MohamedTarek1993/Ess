@@ -78,7 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .about_section {
-  margin-top: 10%;
+  margin-top: 3%;
   .main-title-center {
     padding: 0 10%;
     p {
@@ -145,11 +145,19 @@ export default {
 
 @media (max-width: 1023.98px) {
   .about_section {
-    margin-top: 15%;
+    margin-top: 3%;
     .boxes .box .icon {
       width: 40px;
     }
   }
+}
+@media (max-width: 425.98px){
+.main-title-center p , .main-title p{
+  font-size: .9rem;
+}
+.about_section .img {
+  height: 200px;
+}
 }
 </style>
 

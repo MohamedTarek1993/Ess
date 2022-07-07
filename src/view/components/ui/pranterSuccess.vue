@@ -1,7 +1,7 @@
 <template>
   <section class="pranter">
     <div class="container">
-      <h2>Companies That Helped Us Grow</h2>
+      <h2>{{$t("paranter_title")}}</h2>
       <swiper
         :slidesPerView="5"
         :spaceBetween="10"

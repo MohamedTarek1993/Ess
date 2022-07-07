@@ -5,7 +5,7 @@
         <div class="col-lg-6 col-12">
           <div class="content">
             <div class="main-title">
-              <span> Testimonials</span>
+              <h6>{{ $t("Testimonials") }}</h6>
               <h2>{{ OpinionsSection.title }}</h2>
               <p>{{ OpinionsSection.text }}</p>
             </div>
@@ -50,7 +50,7 @@
                     />
                   </div>
                   <div class="quete">
-                    <img src="../../../assets/image/quet.png" alt="quete">
+                    <img src="../../../assets/image/quet.png" alt="quete" />
                   </div>
                   <h4>{{ opinions.title }}</h4>
                   <h6>{{ opinions.address }}</h6>
@@ -102,14 +102,14 @@ export default {
             text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
           },
           {
-            id: "1",
+            id: "3",
             image: "person2",
             title: "Ahmed Elsayed",
             address: "Baghdad , Iraq",
             text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
           },
           {
-            id: "2",
+            id: "4",
             image: "person1",
             title: "Ohoud Mohamed",
             address: "Baghdad , Iraq",
@@ -133,33 +133,6 @@ export default {
       align-items: flex-start;
       flex-direction: column;
       margin-bottom: 4%;
-      span {
-        color: var(--color-primary);
-        font-size: 0.9rem;
-        font-family: "regular";
-        position: relative;
-        &::after {
-          position: absolute;
-          width: 15px;
-          height: 3px;
-          color: var(--color-primary);
-          top: 0;
-          left: 0;
-        }
-      }
-      h2 {
-        font-family: "semibold";
-        color: var(--color-primary);
-        font-size: 1.5rem;
-        padding: 1% 0;
-      }
-      p {
-        font-family: "regular";
-        color: var(--color-fourth);
-        font-size: 1rem;
-        text-align: start;
-        padding: 3% 0;
-      }
     }
     .swiper {
       .card {
@@ -171,12 +144,12 @@ export default {
         margin-top: 14%;
         border: none;
         border-radius: 10px;
-        box-shadow: -15px 30px 60px rgba($color: #9A9A9A, $alpha: .22);
+        box-shadow: -15px 30px 60px rgba($color: #9a9a9a, $alpha: 0.22);
         .img {
-            position: absolute;
-            top: -30px;
-        
-           left: 36%;
+          position: absolute;
+          top: -30px;
+
+          left: 36%;
           width: 80px;
           height: 80px;
           display: flex;
@@ -188,23 +161,23 @@ export default {
             height: 100%;
           }
         }
-        .quete{
-            padding: 26% 0 3%;
-            img{
-                width: 70%;
-            }
+        .quete {
+          padding: 26% 0 3%;
+          img {
+            width: 70%;
+          }
         }
         h4 {
           font-family: "semibold";
           color: var(--color-primary);
           font-size: 1rem;
-          padding: 2% 0 ;
+          padding: 2% 0;
           margin-bottom: 0;
         }
         h6 {
-              font-family: "meduim";
+          font-family: "meduim";
           color: var(--color-fourth);
-          font-size: .6rem;
+          font-size: 0.6rem;
         }
         p {
           font-family: "regular";
@@ -216,19 +189,33 @@ export default {
       }
     }
   }
-  .map{
+  .map {
     padding-inline-start: 2rem;
-    img{
-        width: 100%;
+    img {
+      width: 100%;
     }
   }
 }
 @media (max-width: 1023.98px) {
-  
- 
   .testmonlies .map img {
     display: none;
   }
 }
+@media (max-width: 425.98px) {
+  .main-title h2 {
+    font-size: 1.2rem;
+  }
+  .main-title p {
+    font-size: 1rem;
+  }
 
+  .testmonlies .content .swiper .card{
+    margin-top: 7%;
+
+  }
+ .testmonlies .content .swiper .card .quete{
+    padding: 15% 0 3%;
+
+  }
+}
 </style>
