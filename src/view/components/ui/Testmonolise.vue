@@ -9,7 +9,6 @@
               <h2>{{ OpinionsSection.title }}</h2>
               <p>{{ OpinionsSection.text }}</p>
             </div>
-
             <swiper
               :slidesPerView="2"
               :spaceBetween="10"
@@ -44,9 +43,7 @@
                 <div class="card">
                   <div class="img">
                     <img
-                      :src="
-                        require(`../../../assets/image/${opinions.image}.png`)
-                      "
+                      :src='opinions.image'
                     />
                   </div>
                   <div class="quete">
@@ -60,7 +57,7 @@
             </swiper>
           </div>
         </div>
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-6 col-12" >
           <div class="map">
             <img src="../../../assets/image/Map.png" alt="maps" />
           </div>
@@ -75,6 +72,10 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
+
+//import axios
+import axios from "axios";
+
 export default {
   name: "Testmonolise",
   components: {
@@ -83,42 +84,22 @@ export default {
   },
   data() {
     return {
-      OpinionsSection: {
-        title: "Our Customers Opinions",
-        text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-        opinions: [
-          {
-            id: "1",
-            image: "person2",
-            title: "Ahmed Elsayed",
-            address: "Baghdad , Iraq",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "2",
-            image: "person1",
-            title: "Ohoud Mohamed",
-            address: "Baghdad , Iraq",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "3",
-            image: "person2",
-            title: "Ahmed Elsayed",
-            address: "Baghdad , Iraq",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "4",
-            image: "person1",
-            title: "Ohoud Mohamed",
-            address: "Baghdad , Iraq",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-        ],
-      },
+      OpinionsSection: { },
     };
   },
+    methods: {
+   fetch_opnion_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/opinionSection").then(({ data }) => {
+        this.OpinionsSection = data.data;
+      //  console.log(this.OpinionsSection);
+      });
+    },
+  },
+  created(){
+    this.fetch_opnion_data();
+  }
 };
 </script>
 
@@ -148,7 +129,7 @@ export default {
         .img {
           position: absolute;
           top: -30px;
-
+           border-radius: 50%;
           left: 36%;
           width: 80px;
           height: 80px;

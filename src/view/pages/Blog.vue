@@ -12,8 +12,13 @@
                   $t("home")
                 }}</router-link>
               </li>
+              <li class="breadcrumb-item">
+                <router-link :to="{ name: 'Blogs' }">{{
+                  $t("blogs")
+                }}</router-link>
+              </li>
               <li class="breadcrumb-item active">
-                <router-link to="#">{{ DetailsBlogs.title }}</router-link>
+                {{ DetailsBlogs.title }}
               </li>
             </ol>
           </div>
@@ -24,12 +29,9 @@
       <!-- end page-title -->
       <div class="content">
         <div class="img">
-          <img
-            :src="require(`../../assets/image/${DetailsBlogs.image}.png`)"
-            alt="single blog"
-          />
+          <img :src="DetailsBlogs.image" alt="single blog" />
         </div>
-        <span class="date">{{ DetailsBlogs.date }}</span>
+        <span class="data">{{ formatDate(DetailsBlogs.date) }}</span>
         <h1>{{ DetailsBlogs.title }}</h1>
         <p v-html="DetailsBlogs.text"></p>
       </div>
@@ -38,18 +40,34 @@
 </template>
 
 <script>
+import axios from "axios";
+import moment from "moment";
+
 export default {
   name: "blog",
   data() {
     return {
       DetailsBlogs: {
-        id: "1",
-        date: "22 March , 2022",
-        image: "blog1",
-        title: "Test And Comission 400KV Grid / Okashat",
-        text: "this is content",
       },
     };
+  },
+  methods: {
+    fetch_blogs_data() {
+      let id = {id: this.$route.params.id};
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.post("/v1/dashboard/detailsBlog", id).then(({ data }) => {
+        this.DetailsBlogs = data.data;
+        console.log(this.DetailsBlogs);
+      });
+    },
+
+    formatDate(value) {
+      return moment(value).format("DD/MM/YYYY");
+    },
+  },
+  created() {
+    this.fetch_blogs_data();
   },
 };
 </script>
@@ -78,18 +96,17 @@ export default {
           font-size: 1rem;
         }
       }
-      .breadcrumb-item.active{
-        a{
+      .breadcrumb-item.active {
+        a {
           font-family: "bold";
-
         }
-      } 
+      }
     }
   }
   .content {
-text-align: center;
-.img {
-    height: 500px;
+    text-align: center;
+    .img {
+      height: 500px;
       img {
         width: 100%;
         height: 100%;
@@ -118,6 +135,5 @@ text-align: center;
   }
 }
 @media (max-width: 425.98px) {
-  
 }
 </style>

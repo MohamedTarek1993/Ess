@@ -9,9 +9,13 @@
             <p>{{ why.text }}</p>
           </div>
           <ul>
-            <li v-for="(WhyList, index) in why.WhyList" :key="index">
+            <!-- <li v-for="(WhyList, index) in why.WhyList" :key="index">
               {{ WhyList.title }}
-            </li>
+            </li> -->
+            <li>{{ why.point_1 }}</li>
+            <li>{{ why.point_2 }}</li>
+            <li>{{ why.point_3 }}</li>
+            <li>{{ why.point_4 }}</li>
           </ul>
           <div class="button">
             <router-link class="secondary" :to="{ name: 'About' }">{{
@@ -24,15 +28,13 @@
             <div class="row">
               <div
                 class="col-lg-6 col-md-6 col-12"
-                v-for="(WhyCard, index) in why.WhyCard"
+                v-for="(WhyCard, index) in why.why_cards"
                 :key="index"
               >
                 <div class="card">
                   <div class="img">
                     <img
-                      :src="
-                        require(`../../../assets/image/${WhyCard.image}.png`)
-                      "
+                      :src="WhyCard.image"
                     />
                   </div>
                   <h4>{{ WhyCard.title }}</h4>
@@ -48,60 +50,29 @@
 </template>
 
 <script>
+//import axios
+import axios from "axios";
 export default {
   name: "chooseUs",
   components: {},
   data() {
     return {
-      why: {
-        title: "Why Choosing ESS ?",
-        text: "Why Would You Not Want To Have A Qualified Team To Take Charge In Designing And Implementing Your Dream Project, A Team That Will Grant You Quality And Satisfaction, A Team That Will Make Sure That Everything Will Go As Planned And Imagined By You.",
-        WhyList: [
-          {
-            title:
-              "Our Engineering office is your right destination when you are looking for professional designs",
-          },
-          {
-            title: "we are devoting years of experience",
-          },
-          {
-            title:
-              "When you are looking for electrical solutions designs Our Engineering office is your right destination ",
-          },
-          {
-            title:
-              "Our Engineering office is your right destination when you are looking for professional designs",
-          },
-        ],
-        WhyCard: [
-          {
-            id: "1",
-            image: "choose1",
-            title: "Professionalism At Work",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "2",
-            image: "choose2",
-            title: "Reach The Final Goal",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "3",
-            image: "choose3",
-            title: "Commitment to delivery times",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "4",
-            image: "choose4",
-            title: "Providing the best solutions",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-        ],
-      },
+      why: {},
     };
   },
+   methods: {
+   fetch_choise_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/whySection").then(({ data }) => {
+        this.why = data.data;
+        //  console.log(this.why);
+      });
+    },
+  },
+  created(){
+    this.fetch_choise_data();
+  }
 };
 </script>
 
@@ -158,6 +129,7 @@ export default {
       .img {
         width: 50px;
         height: 50px;
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -196,10 +168,10 @@ export default {
   }
 }
 @media (max-width: 425.98px) {
-.main-title h2{
-  font-size: 1.1rem;
-}
-.main-title-center p {
+  .main-title h2 {
+    font-size: 1.1rem;
+  }
+  .main-title-center p {
     font-size: 0.9rem;
   }
 }

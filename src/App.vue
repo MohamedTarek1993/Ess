@@ -198,7 +198,7 @@ p {
     border-radius: 2px;
     padding-right: 6%;
     background-color: transparent;
-    color: #f8f8f9;
+    color:var(--color-primary);
     font-family: "regular";
     &:focus {
       box-shadow: none !important;
@@ -348,8 +348,8 @@ input {
       position: absolute;
       width: 15px;
       height: 2px;
-  background: var(--color-primary);
-  color: var(--color-primary);
+      background: var(--color-primary);
+      color: var(--color-primary);
       bottom: -4px;
       left: 0;
     }
@@ -411,6 +411,23 @@ input {
       border-radius: 30px;
       border-top-left-radius: 0px;
     }
+  }
+}
+.sr-only {
+  display: none !important;
+}
+.page-item{
+  margin-inline-end: 2% !important;
+  .page-link{
+ color: var(--color-secound) !important;
+    border-color: var(--color-secound) !important;
+  }
+}
+.page-item.active {
+  .page-link {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-white);
   }
 }
 @media (max-width: 375.98px) {

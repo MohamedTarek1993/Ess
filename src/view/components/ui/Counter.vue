@@ -5,16 +5,15 @@
         <div class="box" v-for="(Statistic, index) in Statistics" :key="index">
           <div class="img">
             <img
-              :src="require(`../../../assets/image/${Statistic.image}.png`)"
+              :src="Statistic.image"
               alt="counter"
             />
           </div>
           <div class="content">
             <div class="d-flex align-items-center justify-content-start">
               <i class="bi bi-plus-lg"></i>
-              <div class="counter" :data-target="Statistic.number"></div>
+              <div class="counter" :data-target="Statistic.number">{{Statistic.number}} </div>
             </div>
-
             <span class="head-categ"> {{ Statistic.title }}</span>
           </div>
         </div>
@@ -24,33 +23,29 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Counter",
   data() {
     return {
-      Statistics: [
-        {
-          id: 1,
-          number: 1000,
-          image: "counter1",
-          title: "Years Of Experience",
-        },
-        {
-          id: 2,
-          number: 1500,
-          image: "counter2",
-          title: "Happy Clients",
-        },
-        {
-          id: 3,
-          number: 2500,
-          image: "counter3",
-          title: "Success Project ",
-        },
-      ],
+      Statistics: [ ],
     };
   },
-  mounted() {
+ 
+   methods: {
+    fetch_static_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/statistics").then(({ data }) => {
+        this.Statistics = data.data;
+        // console.log(this.about);
+      });
+    },
+  },
+  created() {
+    this.fetch_static_data();
+  },
+   mounted() {
     const counters = document.querySelectorAll(".counter");
     counters.forEach((counter) => {
       counter.innerText = "0";

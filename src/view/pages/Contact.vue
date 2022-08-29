@@ -60,6 +60,7 @@
 
 <script>
 import Form from "../components/static/Form.vue";
+import axios from "axios";
 
 export default {
   name: "Contact",
@@ -69,15 +70,23 @@ export default {
   data() {
     return {
       Sitting: {
-        map_link:
-          "https://www.google.com/maps/d/embed?mid=1B1lAsUpYFg82Je7XN1_cxRPf1UU&hl=en_US&ehbc=2E312F",
-        address:
-          " Baghdad, Al Karadah st, Dimondmall, 6th Floor, Business avenue, Office No C-9",
-        emails: ["Haidar.Ghazi@Essiraq.com", "Haidar.Ghazi@Essiraq.com"],
-        numbers: ["+964-7726-100-178", "+964-7726-100-178"],
       },
     };
   },
+   methods: {
+   fetch_contact_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/sitting").then(({ data }) => {
+        this.Sitting = data.data;
+        // console.log(this.heroData);
+      });
+    },
+    
+  },
+  created(){
+    this.fetch_contact_data();
+  }
 };
 </script>
 

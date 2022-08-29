@@ -23,15 +23,10 @@
       </div>
       <div class="upper_content">
         <div class="img">
-          <img
-            :src="
-              require(`../../assets/image/${DetailsProjects.image_header}.png`)
-            "
-            alt="project"
-          />
+          <img :src="DetailsProjects.image_header" alt="project" />
         </div>
         <h1>{{ DetailsProjects.title }}</h1>
-        <p>{{ DetailsProjects.text }}</p>
+        <p v-html ="DetailsProjects.text"></p>
       </div>
       <swiper
         :slidesPerView="3"
@@ -66,11 +61,11 @@
         class="mySwiper"
       >
         <swiper-slide
-          v-for="(images, index) in DetailsProjects.images"
+          v-for="(image, index) in DetailsProjects.images"
           :key="index"
         >
           <div class="img">
-            <img :src="require(`../../assets/image/${images.image}.png`)" />
+            <img :src="image" />
           </div>
         </swiper-slide>
       </swiper>
@@ -87,20 +82,22 @@
               <ul>
                 <li>
                   {{ $t("Start Date") }} -
-                  <span>{{ ProjectDetails.start_date }}</span>
+                  <span>{{ formatDate(DetailsProjects.project_details.start_date )}}</span>
+                   
                 </li>
                 <li>
                   {{ $t("Project Duration ") }} -
-                  <span>{{ ProjectDetails.duration }}</span>
+                  <span>{{ DetailsProjects.project_details.duration }}</span>
                 </li>
                 <li>
                   {{ $t("contractor ") }} -
-                  <span>{{ ProjectDetails.client }}</span>
+                  <span>{{ DetailsProjects.project_details.client }}</span>
                 </li>
                 <li>
                   {{ $t("Project Partner ") }} -
                   <span
-                    v-for="(contractor, index) in ProjectDetails.contractor"
+                    v-for="(contractor, index) in DetailsProjects
+                      .project_details.contractor"
                     :key="index"
                     >{{ contractor }},
                   </span>
@@ -108,7 +105,8 @@
                 <li>
                   {{ $t("Start Date") }} -
                   <span
-                    v-for="(partner, index) in ProjectDetails.partner"
+                    v-for="(partner, index) in DetailsProjects.project_details
+                      .partner"
                     :key="index"
                     >{{ partner }},
                   </span>
@@ -118,12 +116,7 @@
           </div>
           <div class="col-lg-7 col-12">
             <div class="ditals_img">
-              <img
-                :src="
-                  require(`../../assets/image/${DetailsProjects.image_details}.png`)
-                "
-                alt="detials"
-              />
+              <img :src="DetailsProjects.image_details" alt="detials" />
             </div>
           </div>
         </div>
@@ -134,6 +127,10 @@
 </template>
 
 <script>
+import axios from "axios";
+import moment from "moment";
+
+
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -152,36 +149,53 @@ export default {
   data() {
     return {
       DetailsProjects: {
-        id: 1,
-        image_header: "blog3",
-        title:
-          "Suwaira military airport low volrage panels and lighting system",
-        text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-        images: [
-          {
-            image: "project1",
-          },
-          {
-            image: "project2",
-          },
-          {
-            image: "project3",
-          },
-          {
-            image: "project4",
-          },
-        ],
-        description: "this is content",
-        image_details: "project2",
-      },
-      ProjectDetails: {
-        start_date: "22 march , 2022",
-        duration: "3 months",
-        client: "Adel Ahmed",
-        contractor: ["Zaid Shakir", "Haider Ghazi"],
-        partner: ["Zaid Shakir", "Haider Ghazi"],
+        //   id: 1,
+        //   image_header: "blog3",
+        //   title:
+        //     "Suwaira military airport low volrage panels and lighting system",
+        //   text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
+        //   images: [
+        //     {
+        //       image: "project1",
+        //     },
+        //     {
+        //       image: "project2",
+        //     },
+        //     {
+        //       image: "project3",
+        //     },
+        //     {
+        //       image: "project4",
+        //     },
+        //   ],
+        //   description: "this is content",
+        //   image_details: "project2",
+        //   ProjectDetails: {
+        //     start_date: "22 march , 2022",
+        //     duration: "3 months",
+        //     client: "Adel Ahmed",
+        //     contractor: ["Zaid Shakir", "Haider Ghazi"],
+        //     partner: ["Zaid Shakir", "Haider Ghazi"],
+        //   },
       },
     };
+  },
+  methods: {
+    fetch_blog_data() {
+      let id = { id: this.$route.params.id };
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.post("/v1/dashboard/DetailsProjects", id).then(({ data }) => {
+        this.DetailsProjects = data.data;
+        // console.log(this.DetailsBlogs);
+      });
+    },
+    formatDate(value) {
+      return moment(value).format("DD/MM/YYYY");
+    },
+  },
+  created() {
+    this.fetch_blog_data();
   },
 };
 </script>
@@ -322,19 +336,19 @@ export default {
 @media (max-width: 425.98px) {
   .single_project .lower_content .card_box {
     box-shadow: unset;
-        width: 94%;
+    width: 94%;
   }
-  .single_project .lower_content .card_box ul li{
-font-size: 1rem;
+  .single_project .lower_content .card_box ul li {
+    font-size: 1rem;
   }
-  .single_project .lower_content .card_box ul li span{
-font-size: .9rem;
+  .single_project .lower_content .card_box ul li span {
+    font-size: 0.9rem;
   }
   .single_project .upper_content .img {
     height: 300px;
   }
-  .single_project .upper_content h1{
-font-size: 1.3rem;
+  .single_project .upper_content h1 {
+    font-size: 1.3rem;
   }
 }
 </style>

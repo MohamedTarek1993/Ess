@@ -34,10 +34,10 @@
         }"
         class="swiper"
       >
-        <swiper-slide v-for="(team, index) in TeamSection.team" :key="index">
+        <swiper-slide v-for="(team, index) in TeamSection.teams" :key="index">
           <div class="card">
             <div class="img">
-              <img :src="require(`../../../assets/image/${team.image}.png`)" />
+              <img :src="team.image" />
             </div>
             <div class="content">
               <h2>{{ team.title }}</h2>
@@ -80,6 +80,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
+//import axios
+import axios from "axios";
 export default {
   name: "Team",
   components: {
@@ -88,68 +90,22 @@ export default {
   },
   data() {
     return {
-      TeamSection: {
-        title: "Meet Our Team Of Experts",
-        text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-        team: [
-          {
-            id: "1",
-            image: "team1",
-            title: "Haider  Ghazi",
-            text: "Control and systems Engineer specialized in Low voltage power and control systems",
-            social_team: {
-              link_facebook: "#",
-              link_twitter: "#",
-              link_linkedin: "#",
-              link_instgram: "#",
-            },
-          },
-          {
-            id: "2",
-            image: "team2",
-            title: "Haider  Ghazi",
-            text: "Control and systems Engineer specialized in Low voltage power and control systems",
-            social_team: [
-              {
-                link_facebook: "#",
-                link_twitter: "#",
-                link_linkedin: "#",
-                link_instgram: "#",
-              },
-            ],
-          },
-          {
-            id: "3",
-            image: "team3",
-            title: "Haider  Ghazi",
-            text: "Control and systems Engineer specialized in Low voltage power and control systems",
-            social_team: [
-              {
-                link_facebook: "#",
-                link_twitter: "#",
-                link_linkedin: "#",
-                link_instgram: "#",
-              },
-            ],
-          },
-          {
-            id: "4",
-            image: "team4",
-            title: "Haider  Ghazi",
-            text: "Control and systems Engineer specialized in Low voltage power and control systems",
-            social_team: [
-              {
-                link_facebook: "#",
-                link_twitter: "#",
-                link_linkedin: "#",
-                link_instgram: "#",
-              },
-            ],
-          },
-        ],
-      },
+      TeamSection: {},
     };
   },
+   methods: {
+   fetch_team_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/teamSection").then(({ data }) => {
+        this.TeamSection = data.data;
+        //  console.log(this.why);
+      });
+    },
+  },
+  created(){
+    this.fetch_team_data();
+  }
 };
 </script>
 
@@ -190,6 +146,7 @@ export default {
         left: 0;
         bottom: 50px;
         text-align: center;
+        width: 100%;
         ul {
           opacity: 0;
           transition: 0.3s;

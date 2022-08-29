@@ -13,7 +13,7 @@
         </div>
 
         <div class="img">
-          <img :src="require(`../../../assets/image/${header.image}.png`)" />
+          <img :src="header.image" />
         </div>
       </div>
     </div>
@@ -21,18 +21,27 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Hero",
   data() {
     return {
-      header: {
-        image: "hero",
-        title:
-          "ESS Is The Ideal Solutions Of The Power And Control System Solutions",
-        text: "our engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-      },
+      header: {},
     };
   },
+  methods: {
+   fetch_hero_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/header").then(({ data }) => {
+        this.header = data.data;
+        // console.log(this.heroData);
+      });
+    },
+  },
+  created(){
+    this.fetch_hero_data();
+  }
 };
 </script>   
 

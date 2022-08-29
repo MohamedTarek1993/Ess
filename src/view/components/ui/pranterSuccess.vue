@@ -1,7 +1,7 @@
 <template>
   <section class="pranter">
     <div class="container">
-      <h2>{{$t("paranter_title")}}</h2>
+      <h2>{{ $t("paranter_title") }}</h2>
       <swiper
         :slidesPerView="5"
         :spaceBetween="10"
@@ -36,7 +36,7 @@
       >
         <swiper-slide v-for="(Partner, index) in Partners" :key="index">
           <div class="img">
-            <img :src="require(`../../../assets/image/${Partner.image}.png`)" />
+            <img :src="Partner.image" />
           </div>
         </swiper-slide>
       </swiper>
@@ -50,6 +50,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
+//import axios
+import axios from "axios";
 
 export default {
   name: "pranterSuccess",
@@ -59,24 +61,21 @@ export default {
   },
   data() {
     return {
-      Partners: [
-        {
-          image: "prant1",
-        },
-        {
-          image: "prant2",
-        },
-        {
-          image: "prant3",
-        },
-        {
-          image: "prant4",
-        },
-        {
-          image: "prant5",
-        },
-      ],
+      Partners: [],
     };
+  },
+  methods: {
+    fetch_partners_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/partners").then(({ data }) => {
+        this.Partners = data.data;
+        // console.log(this.Partners);
+      });
+    },
+  },
+  created() {
+    this.fetch_partners_data();
   },
 };
 </script>
@@ -92,8 +91,8 @@ export default {
     text-align: center;
   }
   .img {
-    width: 70px;
-    height: 70px;
+    width: 130px;
+    height: 130px;
     img {
       width: 100%;
       height: 100%;

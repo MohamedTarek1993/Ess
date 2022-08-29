@@ -1,5 +1,5 @@
 <template>
- <div class="main-title-center">
+  <div class="main-title-center">
     <h2>{{ $t("form_title") }}</h2>
     <p>{{ $t("form_text") }}</p>
   </div>
@@ -46,29 +46,67 @@
 
     <div class="input-group row">
       <div class="col-12 col-lg-12">
-      <textarea type="text" class="form-control" :placeholder="$t('Tell us about yourself ')" v-model="textarea" />
-
+        <textarea
+          type="text"
+          class="form-control"
+          :placeholder="$t('Tell us about yourself ')"
+          v-model="message"
+        />
       </div>
     </div>
     <div class="button">
-      <button class="btn secondary">{{ $t("Contact_Us") }}</button>
+      <button type="button" @click="fetch_contact_data" class="btn secondary">
+        {{ $t("Contact_Us") }}
+      </button>
     </div>
   </form>
 </template>
 
 <script>
+import axios from "axios";
+import Swal from "sweetalert2";
 export default {
-    name:'Form',
-    data(){
-        return{
-        name:'',
-        company:'',
-        email:'',
-        phone:'',
-        textarea:'',
-
+  name: "Form",
+  data() {
+    return {
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+  },
+  methods: {
+    fetch_contact_data() {
+      let data = {
+        name: this.name,
+        company: this.company,
+        email: this.email,
+        phone: this.phone,
+        message: this.message,
+      };
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.post("/v1/dashboard/contact", data).then(({ data }) => {
+        if (data.status == true) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: data.msg,
+            timer: 1500,
+          });
         }
+        else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: data.message,
+            timer: 1500,
+          });
+        }
+      });
     },
+  },
 };
 </script>
 
@@ -82,22 +120,20 @@ export default {
     padding: 0;
   }
 }
-.button{
+.button {
   justify-content: center;
-      margin-top: 2%;
-.btn{
-  padding: 1%;
-  width: 24%;
-
-}
+  margin-top: 2%;
+  .btn {
+    padding: 1%;
+    width: 24%;
+  }
 }
 @media (max-width: 768.98px) {
-  .input-group .form-control{
-  margin-bottom: 4%;
+  .input-group .form-control {
+    margin-bottom: 4%;
+  }
+  .button .btn {
+    width: 50%;
+  }
 }
-.button .btn{
-width: 50%;
-}
-}
-
 </style>

@@ -14,7 +14,7 @@
         </div>
         <div class="col-lg-6 col-12">
           <div class="img">
-            <img src="../../assets/image/privacy.webp" alt="privacy">
+            <img src="../../assets/image/privacy.webp" alt="privacy" />
           </div>
         </div>
       </div>
@@ -23,14 +23,26 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Privacy",
   data() {
     return {
-      Terms: {
-        text: "this is text",
-      },
+      Privacy: {},
     };
+  },
+  methods: {
+    fetch_Privacy_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/privacy").then(({ data }) => {
+        this.Privacy = data.data;
+        // console.log(this.Faq);
+      });
+    },
+  },
+  created() {
+    this.fetch_Privacy_data();
   },
 };
 </script>
@@ -43,26 +55,25 @@ export default {
       padding: 0;
     }
   }
-  .content{
-   :is(h1,h2,h3,h4,h5,h6){
-   color: var(--color-primary);
-   font-family: 'bold';
-   font-size: 1.3rem;
-   }
-   p{
-     color: var(--color-fourth);
-   font-family: 'regular';
-   font-size: 1rem;
-   }
-   
+  .content {
+    :is(h1, h2, h3, h4, h5, h6) {
+      color: var(--color-primary);
+      font-family: "bold";
+      font-size: 1.3rem;
+    }
+    p {
+      color: var(--color-fourth);
+      font-family: "regular";
+      font-size: 1rem;
+    }
   }
-  .img{
+  .img {
     height: 370px;
     width: 100%;
-    img{
+    img {
       height: 100%;
       width: 100%;
     }
-   }
+  }
 }
 </style>

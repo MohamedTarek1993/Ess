@@ -25,14 +25,26 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Together",
   data() {
     return {
-      together: {
-        text: " +964-7726-100-178",
-      },
+      together: {},
     };
+  },
+   methods: {
+    fetch_together_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/pagesFooter").then(({ data }) => {
+        this.together = data.data;
+        // console.log(this.Faq);
+      });
+    },
+  },
+  created() {
+    this.fetch_together_data();
   },
 };
 </script>

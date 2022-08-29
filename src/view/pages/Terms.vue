@@ -23,14 +23,26 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Terms",
   data() {
     return {
-      Terms: {
-        text: "this is text",
-      },
+      Terms: { },
     };
+  },
+   methods: {
+    fetch_Terms_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/terms").then(({ data }) => {
+        this.Privacy = data.data;
+        // console.log(this.Faq);
+      });
+    },
+  },
+  created() {
+    this.fetch_Terms_data();
   },
 };
 </script>

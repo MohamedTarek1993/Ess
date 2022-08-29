@@ -1,4 +1,4 @@
-d<template>
+<template>
   <section class="about_section">
     <div class="container">
       <div class="main-title-center">
@@ -12,22 +12,24 @@ d<template>
             <p>{{ About.why_text }}</p>
           </div>
           <div class="boxes">
-            <div
-              class="box"
-              v-for="(social_team, index) in About.social_team"
-              :key="index"
-            >
+            <div class="box">
               <div class="icon">
-                <img
-                  :src="
-                    require(`../../../assets/image/${social_team.image}.webp`)
-                  "
-                  alt="icon"
+                <img src="../../../assets/image/chooseus1.webp" alt="icon"
                 />
               </div>
               <div class="text">
-                <h6>{{ social_team.title }}</h6>
-                <p>{{ social_team.text }}</p>
+                <h6> {{ $t("Our Vission") }}</h6>
+                <p>{{ About.our_vision_text }}</p>
+              </div>
+            </div>
+             <div class="box">
+              <div class="icon">
+                <img src="../../../assets/image/chooseus2.webp" alt="icon"
+                />
+              </div>
+              <div class="text">
+                <h6> {{ $t("Our Mission ") }}</h6>
+                <p>{{ About.our_mission_text }}</p>
               </div>
             </div>
           </div>
@@ -36,7 +38,7 @@ d<template>
         <div class="col-lg-6 col-12">
           <div class="img">
             <img
-              :src="require(`../../../assets/image/${About.image}.webp`)"
+              :src="About.image"
               alt="about"
             />
           </div>
@@ -47,31 +49,27 @@ d<template>
 </template>
 
 <script>
+//import axios
+import axios from "axios";
 export default {
   name: "about us",
   data() {
     return {
-      About: {
-        title: "About Us",
-        text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-        why_title: "Why Choosing ESS ?",
-        why_text:
-          "ESS Is A Specialized Electrical Engineering Service Provider With A Combined Experience Of More Than 25 Years In Power And Control System Solutions, ESS Is Your One-Stop When It Comes To Electrical Designs, Construction Activities, And Procurement.",
-        image: "about",
-        social_team: [
-          {
-            image: "chooseus1",
-            title: "Our Vission",
-            text: "To Build An Extraordinary Customer-Client Bond In Order To Meet The Customer's Requirements And Needs",
-          },
-          {
-            image: "chooseus2",
-            title: "Our Mission",
-            text: "By Applying Precise Methods And Technical Standards That Comply With The Customer's Field Of Work",
-          },
-        ],
-      },
+      About: { },
     };
+  },
+  methods: {
+    fetch_about_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/about").then(({ data }) => {
+        this.About = data.data;
+        // console.log(this.about);
+      });
+    },
+  },
+  created() {
+    this.fetch_about_data();
   },
 };
 </script>
@@ -151,13 +149,14 @@ export default {
     }
   }
 }
-@media (max-width: 425.98px){
-.main-title-center p , .main-title p{
-  font-size: .9rem;
-}
-.about_section .img {
-  height: 200px;
-}
+@media (max-width: 425.98px) {
+  .main-title-center p,
+  .main-title p {
+    font-size: 0.9rem;
+  }
+  .about_section .img {
+    height: 200px;
+  }
 }
 </style>
 

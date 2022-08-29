@@ -3,14 +3,14 @@
     <div class="container">
       <div class="main-title-center">
         <h6>{{$t("Projects")}}</h6>
-        <h2>{{ ProjectsSection.title }}</h2>
-        <p>{{ ProjectsSection.text }}</p>
+        <h2>{{ ProjectsSectionTitle.title }}</h2>
+        <p>{{ ProjectsSectionTitle.text }}</p>
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li
           class="nav-item"
           role="presentation"
-          v-for="(project_name, index) in ProjectsSection.project_name"
+          v-for="(project_name, index) in ProjectsSection"
           :key="index"
         >
           <button
@@ -23,13 +23,13 @@
             :aria-controls="'index' + index"
             aria-selected="true"
           >
-            {{ project_name.title_tab }}
+            {{ project_name.title }}
           </button>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div
-          v-for="(content, index) in ProjectsSection.project_name"
+          v-for="(content, index) in ProjectsSection"
           :key="index"
           :class="`tab-pane fade  ${index == 0 ? ' show active' : ''}`"
           :id="'index' + index"
@@ -37,23 +37,22 @@
           :aria-labelledby="'index-tab' + index"
         >
           <div class="boxes">
-            <div
+            <router-link
               class="box-1"
-              v-for="(content_image, index) in content.content"
+              v-for="(content_image, index) in content.projects"
+              :to="`/project/${content_image.id}`"
               :key="index"
             >
               <div class="caption-1">
                 <h3>{{ content_image.title }}</h3>
-                <p>{{ content_image.text }}</p>
+                <!-- <p v-html="content_image.text"></p> -->
               </div>
               <div class="img">
                 <img
-                  :src="
-                    require(`../../../assets/image/${content_image.image}.png`)
-                  "
+                  :src="content_image.image"
                 />
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -65,102 +64,40 @@
 </template>
 
 <script>
+//import axios
+import axios from "axios";
+
 export default {
   name: "Project",
   data() {
     return {
-      ProjectsSection: {
-        title: "The Best Projects We Have Completed",
-        text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-        project_name: [
-          {
-            title_tab: "All",
-            content: [
-              {
-                image: "blog1",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-              {
-                image: "blog2",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-              {
-                image: "blog3",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-              {
-                image: "blog1",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-              {
-                image: "blog2",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-              {
-                image: "blog3",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-            ],
-          },
-          {
-            title_tab: "Electrical",
-            content: [
-              {
-                image: "blog1",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-            ],
-          },
-          {
-            title_tab: "Maintainance",
-            content: [
-              {
-                image: "blog1",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-            ],
-          },
-          {
-            title_tab: "Switch-board design",
-            content: [
-              {
-                image: "blog2",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-            ],
-          },
-          {
-            title_tab: "Procurements ",
-            content: [
-              {
-                image: "blog3",
-                title:
-                  "Test and comission 132KV substation with Hyosong south of iraq",
-                text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-              },
-            ],
-          },
-        ],
-      },
+      ProjectsSectionTitle: {},
+      ProjectsSection: { },
     };
+  },
+  methods: {
+    fetch_header_project_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/projectIndexHeader").then(({ data }) => {
+        this.ProjectsSectionTitle = data;
+        //  console.log(this.ProjectsSection);
+      });
+    },
+
+     fetch_tab_project_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/projectIndex").then(({ data }) => {
+        this.ProjectsSection = data.data;
+         console.log(this.ProjectsSection);
+      });
+    },
+
+  },
+  created() {
+    this.fetch_header_project_data();
+    this.fetch_tab_project_data();
   },
 };
 </script>

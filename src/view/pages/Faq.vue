@@ -8,7 +8,7 @@
       <div class="accordion" id="accordionExample">
         <div
           class="accordion-item"
-          v-for="(Questions, index) in Faq.Questions"
+          v-for="(question, index) in Faq.questions"
           :key="index"
         >
           <h2 class="accordion-header" id="headingOne">
@@ -20,7 +20,7 @@
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              {{ Questions.questions }}
+              {{ question.question }}
             </button>
           </h2>
           <div
@@ -30,7 +30,7 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              {{ Questions.answer }}
+              {{ question.answer }}
             </div>
           </div>
         </div>
@@ -40,33 +40,27 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Faq",
   data() {
     return {
-      Faq: {
-        title: "Frequently Asked Questions",
-        text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-        Questions: [
-          {
-            questions: "How Can I contact with the manager ?",
-            answer:
-              "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet.",
-          },
-          {
-            questions: "How Can I contact with the manager ?",
-            answer:
-              "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet.",
-          },
-          {
-            questions: "How Can I contact with the manager ?",
-            answer:
-              "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet.",
-          },
-        ],
-      },
+      Faq: {},
     };
   },
+    methods: {
+   fetch_faq_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/faq").then(({ data }) => {
+        this.Faq = data.data;
+        console.log(this.Faq);
+      });
+    },
+  },
+  created(){
+    this.fetch_faq_data();
+  }
 };
 </script>
 

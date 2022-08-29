@@ -2,7 +2,7 @@
   <section class="blog_section">
     <div class="container">
       <div class="main-title-center">
-        <h6>{{$t("Blog")}}</h6>
+        <h6>{{ $t("Blog") }}</h6>
         <h2>{{ BlogsSection.title }}</h2>
         <p>{{ BlogsSection.text }}</p>
       </div>
@@ -10,28 +10,26 @@
         <div class="row">
           <div
             class="col-lg-4 col-md-6 col-12"
-            v-for="(blogs, index) in BlogsSection.blogs"
+            v-for="(blogs, index) in BlogsSection.blogs.data"
             :key="index"
           >
-          <!-- <router-link class="link" :to="`/blog/${blogs.id}`"> -->
-          <router-link class="link" :to="`/blog/2`">
-            <div class="card">
-              <div class="img">
-                <img
-                  :src="require(`../../../assets/image/${blogs.image}.png`)"
-                />
+            <!-- <router-link class="link" :to="`/blog/${blogs.id}`"> -->
+            <router-link class="link" :to="`/blog/2`">
+              <div class="card">
+                <div class="img">
+                  <img :src="blogs.image" />
+                </div>
+                <span class="data">{{ formatDate(blogs.date) }}</span>
+                <h4>{{ blogs.title }}</h4>
+                <p>{{ blogs.text }}</p>
               </div>
-              <span class="data">{{ blogs.date }}</span>
-              <h4>{{ blogs.title }}</h4>
-              <p>{{ blogs.text }}</p>
-            </div>
             </router-link>
           </div>
         </div>
       </div>
       <div class="button">
         <router-link class="btn secondary" :to="{ name: 'Blogs' }">
-          {{$t("VIEW More")}}</router-link
+          {{ $t("VIEW More") }}</router-link
         >
       </div>
     </div>
@@ -39,58 +37,58 @@
 </template>
 
 <script>
+//import axios
+import axios from "axios";
+//import formate date
+import moment from "moment";
 export default {
   name: "blogSection",
   data() {
     return {
       BlogsSection: {
-        title: "The Latest News That Informs You",
-        text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-        blogs: [
-          {
-            id: "1",
-            image: "blog1",
-            date: "22 March , 2022",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "2",
-            image: "blog2",
-            date: "22 March , 2022",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "3",
-            image: "blog3",
-            date: "22 March , 2022",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-        ],
+        blogs: {
+          data: [],
+        }
       },
     };
+  },
+
+  methods: {
+    fetch_blog_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/blogSection").then(({ data }) => {
+        this.BlogsSection = data.data;
+          // console.log(this.BlogsSection);
+      });
+    },
+
+    formatDate(value) {
+      return moment(value).format("DD/MM/YYYY");
+    },
+  },
+  created() {
+    this.fetch_blog_data();
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .blog_section {
-  .main-title-center{
-   p{
-    text-align: center;
-    padding: 1% 5%;
-   }
+  .main-title-center {
+    p {
+      text-align: center;
+      padding: 1% 5%;
+    }
   }
   .boxes {
     .card {
       border: none;
       background: var(--color-white);
-      
-      transition: .25s all ease-in-out;
-      &:hover{
-        box-shadow: 0px 7px 60px rgba($color: #7A7A7A, $alpha: 0.16);
+
+      transition: 0.25s all ease-in-out;
+      &:hover {
+        box-shadow: 0px 7px 60px rgba($color: #7a7a7a, $alpha: 0.16);
         transform: scale(1.03);
       }
       .img {
@@ -113,24 +111,24 @@ export default {
       p {
         color: var(--color-fourth);
         font-family: "regular";
-        font-size:1rem;
+        font-size: 1rem;
         line-height: 1.5;
-         display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
   .button {
-    justify-content: center ;
+    justify-content: center;
     .btn {
       padding: 1%;
       width: 30%;
     }
   }
-  .link{
+  .link {
     text-decoration: none;
   }
 }

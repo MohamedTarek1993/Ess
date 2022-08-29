@@ -10,28 +10,28 @@
           </div>
           <div class="description">
             <p>
-              {{ Description.text }}
+              {{ sitting.text }}
             </p>
             <ul class="social_icon">
               <li>
-                <a target="__blank" href="{{SocialTeam.link_facebook}}">
+                <a target="__blank" href="{{sitting.link_facebook}}">
                   <i class="bi bi-facebook"></i>
                 </a>
               </li>
 
               <li>
-                <a target="__blank" href="{{SocialTeam.link_instgram}}">
+                <a target="__blank" href="{{sitting.link_instgram}}">
                   <i class="bi bi-instagram"></i>
                 </a>
               </li>
 
               <li>
-                <a target="__blank" href="{{SocialTeam.link_twitter}}">
+                <a target="__blank" href="{{sitting.link_twitter}}">
                   <i class="bi bi-twitter"></i>
                 </a>
               </li>
               <li>
-                <a target="__blank" href="{{SocialTeam.link_linkedin}}">
+                <a target="__blank" href="{{sitting.link_linkedin}}">
                   <i class="bi bi-linkedin"></i>
                 </a>
               </li>
@@ -42,13 +42,13 @@
           <div class="important-information">
             <h2 class="text">{{ $t("Addresses") }}</h2>
             <p>
-              <span>{{ $t("Address") }} </span>:{{ Sitting.address }}
+              <span>{{ $t("Address") }} </span>:{{ sitting.address }}
             </p>
             <div class="d-flex">
               <p>{{ $t("Phone Num") }} :</p>
               <p>
                 <a
-                  v-for="(number, index) in Sitting.numbers"
+                  v-for="(number, index) in sitting.numbers"
                   :key="index"
                   :href="'mailto:' + number"
                   >{{ number }}</a
@@ -59,7 +59,7 @@
               <p>{{ $t("E-mail") }} :</p>
               <p>
                 <a
-                  v-for="(email, index) in Sitting.emails"
+                  v-for="(email, index) in sitting.emails"
                   :key="index"
                   :href="'mailto:' + email"
                   >{{ email }}</a
@@ -126,7 +126,13 @@
                 v-model="email"
               />
               <div class="button">
-                <button class="btn secondary">{{ $t("Subscripe") }}</button>
+                <button
+                  class="btn secondary"
+                  @click="fetch_subscripe_data"
+                  type="button"
+                >
+                  {{ $t("Subscripe") }}
+                </button>
               </div>
             </form>
           </div>
@@ -138,7 +144,7 @@
         <p>{{ $t("All copyright reserved@ESS 2022") }}</p>
       </div>
       <div class="right_slide">
-        {{ $t("Made With     by crazy idea") }}
+        {{ $t("Made With by crazy idea") }}
         <br />
         {{ $t("Think Out of the box") }}
       </div>
@@ -147,27 +153,53 @@
 </template>
 
 <script>
+import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "Footer",
   data() {
     return {
-      Description: {
-        text: "ESS is a specialized electrical engineering a service provider with a combined experience of more than 25 years in power and  control system solutions",
-      },
-      SocialTeam: {
-        link_facebook: "#",
-        link_twitter: "#",
-        link_linkedin: "#",
-        link_instgram: "#",
-      },
-      Sitting: {
-        address:
-          " Baghdad, Al Karadah st, Dimondmall, 6th Floor, Business avenue, Office No C-9",
-        emails: ["Haidar.Ghazi@Essiraq.com", "Haidar.Ghazi@Essiraq.com"],
-        numbers: ["+964-7726-100-178", "+964-7726-100-178"],
-      },
+      sitting: {},
       email: "",
     };
+  },
+  methods: {
+    fetch_sittengs_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/sitting").then(({ data }) => {
+        this.sitting = data.data;
+        // console.log(this.about);
+      });
+    },
+    fetch_subscripe_data() {
+      let data = {
+        email: this.email,
+      };
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.post("/v1/dashboard/newsletter", data).then(({ data }) => {
+        if (data.status == true) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: data.msg,
+            timer: 1500,
+          });
+        }
+        else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: data.message,
+            timer: 1500,
+          });
+        }
+      });
+    },
+  },
+  created() {
+    this.fetch_sittengs_data();
   },
 };
 </script>
@@ -323,17 +355,15 @@ footer {
 @media (max-width: 768.98px) {
   footer {
     .lower_footer {
-          margin-top: 6%;
-
+      margin-top: 6%;
     }
   }
- 
 }
-@media (max-width: 425.98px){
+@media (max-width: 425.98px) {
   footer .important-information .form_footer .form-control {
     width: 90%;
   }
-  .button .secondary{
+  .button .secondary {
     padding: 1%;
   }
 }

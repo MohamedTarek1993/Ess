@@ -9,25 +9,29 @@
         <div class="row">
           <div
             class="col col-lg-4 col-md-6 col-12 py-4"
-            v-for="(Blogs, index) in BlogsSection.Blogs"
+            v-for="(blogs, index) in BlogsSection.blogs.data"
             :key="index"
           >
-            <router-link to="/blog/2">
+            <router-link :to="`/blog/${blogs.id}`">
               <div class="img">
-                <img
-                  :src="require(`../../assets/image/${Blogs.image}.png`)"
-                  alt="blog"
-                />
+                 <img :src="blogs.image" />
               </div>
               <div class="mx-4">
-                <span class="data">
-                  {{ Blogs.date }}
-                </span>
-                <h4>{{ Blogs.title }}</h4>
-                <p>{{ Blogs.text }}</p>
+                <span class="data">{{ formatDate(blogs.date) }}</span>
+                <h4>{{ blogs.title }}</h4>
+                <p>{{ blogs.text }}</p>
               </div>
             </router-link>
           </div>
+        </div>
+        <div class="row">
+          <pagination
+          :data="BlogsSection.blogs"
+          class="mx-auto d-flex align-items-center justify-content-center pagination"
+          @pagination-change-page="fetch_blogs_data">
+            <span slot="prev-nav">&lt;</span>
+            <span slot="next-nav">&gt;</span>
+          </pagination>
         </div>
       </div>
     </div>
@@ -35,59 +39,40 @@
 </template>
 
 <script>
+import axios from "axios";
+import moment from "moment";
+import pagination from "laravel-vue-pagination";
+
 export default {
   name: "Blogs",
   data() {
     return {
       BlogsSection: {
-        title: "Blog",
-        text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-        Blogs: [
-          {
-            id: "1",
-            date: "22 March , 2022",
-            image: "blog1",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "2",
-            date: "22 March , 2022",
-            image: "blog2",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "3",
-            date: "22 March , 2022",
-            image: "blog3",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "4",
-            date: "22 March , 2022",
-            image: "blog1",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "5",
-            date: "22 March , 2022",
-            image: "blog2",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "6",
-            date: "22 March , 2022",
-            image: "blog3",
-            title: "Test and comission 400KV grid / Okashat",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-        ],
+        blogs: {
+          data: [],
+        }
       },
     };
+  },
+  components: {
+    pagination,
+  }, 
+  methods: {
+    fetch_blogs_data(page = 1) {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/blogIndex?page=" + page).then(({ data }) => {
+        this.BlogsSection = data.data;
+        console.log(this.BlogsSection);
+      });
+    },
+
+    formatDate(value) {
+      return moment(value).format("DD/MM/YYYY");
+    },
+  },
+  created() {
+    this.fetch_blogs_data();
   },
 };
 </script>
@@ -137,7 +122,8 @@ export default {
         a {
           display: flex;
           flex-direction: row;
-          justify-content: center;
+          justify-content: flex-start;
+          align-items: flex-start;
           .img {
             width: 60%;
             height: 300px;
@@ -147,17 +133,24 @@ export default {
               height: 100%;
             }
           }
-          h4{
+          h4 {
             font-size: 2rem;
             padding-inline-end: 8%;
           }
-          p{
-      -webkit-line-clamp: 5;
-
+          p {
+            -webkit-line-clamp: 5;
           }
         }
       }
     }
+    .pagination{
+        .sr-only{
+          display: none !important;
+      }
+    }
   }
 }
+.sr-only{
+        display: none !important;
+      }
 </style>

@@ -40,7 +40,7 @@
           <div class="card">
             <div class="img">
               <img
-                :src="require(`../../../assets/image/${service.image}.png`)"
+                :src="service.image"
               />
             </div>
             <h4>{{ service.title }}</h4>
@@ -57,6 +57,8 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
+//import axios
+import axios from "axios";
 export default {
   name: "Service",
   components: {
@@ -65,37 +67,22 @@ export default {
   },
   data() {
     return {
-      ServicesSection: {
-        title: "What We Offer ?",
-        text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-        services: [
-          {
-            id: "1",
-            image: "serv1",
-            title: "Consultation",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "2",
-            image: "serv2",
-            title: "Maintenance Services",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "3",
-            image: "serv3",
-            title: "Electrical systmes design",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-          {
-            id: "4",
-            image: "serv4",
-            title: "Electrical load calculation ",
-            text: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam ",
-          },
-        ],
-      },
+      ServicesSection: {},
     };
+  },
+
+   methods: {
+    fetch_service_data() {
+      const newLocal = this.$i18n.locale;
+      axios.defaults.headers.common["Accept-Language"] = newLocal;
+      axios.get("/v1/dashboard/serviceSection").then(({ data }) => {
+        this.ServicesSection = data.data;
+        // console.log(this.ServicesSection);
+      });
+    },
+  },
+  created() {
+    this.fetch_service_data();
   },
 };
 </script>
@@ -142,8 +129,8 @@ export default {
         box-shadow: 0px 7px 60px rgba($color: #7A7A7A, $alpha: .16);
       }
       .img {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 80px;
         display: flex;
         justify-content: center;
         align-items: center;
