@@ -430,6 +430,17 @@ input {
     color: var(--color-white);
   }
 }
+
+@media (max-width: 991.98px){
+  header {
+    .mobile-menu {
+      top: 2% !important;
+      i {
+        padding: .1rem .3rem !important;
+      }
+    }
+  }
+}
 @media (max-width: 375.98px) {
   .button {
     .secondary {

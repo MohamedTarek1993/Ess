@@ -14,24 +14,24 @@
             </p>
             <ul class="social_icon">
               <li>
-                <a target="__blank" href="{{sitting.link_facebook}}">
+                <a target="__blank" :href="sitting.link_facebook">
                   <i class="bi bi-facebook"></i>
                 </a>
               </li>
 
               <li>
-                <a target="__blank" href="{{sitting.link_instgram}}">
+                <a target="__blank" :href="sitting.link_instgram">
                   <i class="bi bi-instagram"></i>
                 </a>
               </li>
 
               <li>
-                <a target="__blank" href="{{sitting.link_twitter}}">
+                <a target="__blank" :href="sitting.link_twitter">
                   <i class="bi bi-twitter"></i>
                 </a>
               </li>
               <li>
-                <a target="__blank" href="{{sitting.link_linkedin}}">
+                <a target="__blank" :href="sitting.link_linkedin">
                   <i class="bi bi-linkedin"></i>
                 </a>
               </li>
@@ -74,42 +74,42 @@
             <ul class="link">
               <li>
                 <router-link class="link_footer" :to="{ name: 'Home' }"
-                  >Home</router-link
+                  >  {{ $t("home") }}</router-link
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Home' }"
-                  >Our Projects</routerLink
+                  > {{ $t("Our_Projects") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Contact' }"
-                  >Contact Us</routerLink
+                  >{{ $t("contact") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Privacy' }"
-                  >Privacy Policy</routerLink
+                  > {{ $t("privacy") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'About' }"
-                  >About Us</routerLink
+                  > {{ $t("about") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Blogs' }"
-                  >Blog</routerLink
+                  >{{ $t("blog") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Faq' }"
-                  >FAQ</routerLink
+                  > {{ $t("faq") }}</routerLink
                 >
               </li>
               <li>
                 <routerLink class="link_footer" :to="{ name: 'Terms' }"
-                  >Terms & Conditions</routerLink
+                  > {{ $t("terms") }}</routerLink
                 >
               </li>
             </ul>

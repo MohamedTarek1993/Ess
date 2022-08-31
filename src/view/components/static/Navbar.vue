@@ -3,14 +3,14 @@
     <nav>
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-12">
+          <div class="col-lg-4 col-6">
             <div class="logo">
               <router-link class="header" :to="{ name: 'Home' }">
                 <img src="../../../assets/image/logo.png" alt="logo" />
               </router-link>
             </div>
           </div>
-          <div class="col-lg-8 col-12">
+          <div class="col-lg-8 col-6">
             <div class="nav-link">
               <ul v-show="!mobile">
                 <router-link :to="{ name: 'Home' }" class="link-navbar">
@@ -29,7 +29,7 @@
                   {{ $t("contact") }}
                 </router-link>
               </ul>
-              <div class="dropdown lang">
+              <div class="dropdown lang" v-show="!mobile">
                 <a
                   class="btn dropdown-toggle"
                   href="#"
@@ -57,36 +57,66 @@
                 </ul>
               </div>
             </div>
+
+            <div @click="showMenu" v-show="mobile" class="mobile-menu">
+              <i class="bi bi-list"></i>
+              <transition name="mobile-icon">
+                <ul v-show="mobileNav" class="mobile-nav">
+                  <span class="close" @click="hideMenu">
+                    <i class="bi bi-x"></i>
+                  </span>
+                  <router-link :to="{ name: 'Home' }" class="link">{{
+                    $t("home")
+                  }}</router-link>
+                  <router-link :to="{ name: 'About' }" class="link">
+                    {{ $t("about") }}</router-link
+                  >
+                  <router-link :to="{ name: 'Projects' }" class="link">
+                    {{ $t("Our_Projects") }}
+                  </router-link>
+                  <router-link :to="{ name: 'Blogs' }" class="link">
+                    {{ $t("blog") }}
+                  </router-link>
+                  <router-link :to="{ name: 'Contact' }" class="link">
+                    {{ $t("contact") }}</router-link
+                  >
+                  <div class="dropdown lang" v-show="mobile">
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i class="bi bi-globe2"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <li>
+                        <a
+                          class="dropdown-item"
+                          v-for="entry in languages"
+                          :key="entry.title"
+                          @click="changeLocale(entry.language)"
+                          :iso="entry.flag"
+                          v-bind:squared="false"
+                        >
+                          <flag :iso="entry.flag" v-bind:squared="false" />
+                          {{ entry.title }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </ul>
+              </transition>
+            </div>
           </div>
         </div>
       </div>
     </nav>
-    <div @click="showMenu" v-show="mobile" class="mobile-menu">
-      <i class="bi bi-list"></i>
-      <transition name="mobile-icon">
-        <ul v-show="mobileNav" class="mobile-nav">
-         <span class="close">
-            <i class="bi bi-x"></i>
-          </span>
-          <router-link :to="{ name: 'Home' }" class="link">{{
-            $t("home")
-          }}</router-link>
-          <router-link :to="{ name: 'About' }" class="link">
-            {{ $t("about") }}</router-link
-          >
-          <router-link :to="{ name: 'Projects' }" class="link">
-            {{ $t("Our_Projects") }}
-          </router-link>
-          <router-link :to="{ name: 'Blogs' }" class="link">
-            {{ $t("blog") }}
-          </router-link>
-          <router-link :to="{ name: 'Contact' }" class="link">
-            {{ $t("contact") }}</router-link
-          >
-         
-        </ul>
-      </transition>
-    </div>
   </header>
 </template>
 
@@ -126,7 +156,10 @@ export default {
       this.mobileNav = false;
     },
     showMenu() {
-      this.mobileNav = !this.mobileNav;
+      this.mobileNav = true;
+    },
+    hideMenu() {
+      this.mobileNav = false;
     },
     changeLocale(locale) {
       this.$i18n.locale = locale;
@@ -167,7 +200,7 @@ header {
       justify-content: flex-start;
       align-items: center;
       width: 100%;
-      text-transform: capitalize;  
+      text-transform: capitalize;
       ul {
         margin: 0;
         padding: 0;
@@ -235,7 +268,7 @@ header {
     i {
       font-size: 30px;
       color: var(--color-white);
-      border: 1px solid var(--color-white);
+      // border: 1px solid var(--color-white);
       border-radius: 8px;
     }
   }
@@ -247,8 +280,9 @@ header {
     flex-direction: column;
     position: fixed;
     height: 100%;
-    background: rgba($color: #18261e, $alpha: 0.88);
+    background: rgba($color: #18261e, $alpha: 1);
     top: 0;
+    z-index: 999;
     right: 0;
     .link {
       padding: 15px 0;
@@ -262,13 +296,20 @@ header {
       }
     }
   }
-
+  @media (max-width: 991.98px) {
+    .bi-globe2 {
+      font-size: 0.9rem !important;
+      padding: 0.5rem !important;
+      z-index: 10000 !important;
+    }
+  }
   //   animation of nav mobile
   .mobile-icon-enter-active,
   .mobile-icon-leave-active {
     transition: all 1s ease;
   }
-  .mobile-icon-enter ,.mobile-icon-leave {
+  .mobile-icon-enter,
+  .mobile-icon-leave {
     transform: translateX(+250px);
   }
   .mobile-icon-enter-to {
