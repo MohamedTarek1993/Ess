@@ -62,7 +62,7 @@
               <i class="bi bi-list"></i>
               <transition name="mobile-icon">
                 <ul v-show="mobileNav" class="mobile-nav">
-                  <span class="close" @click="hideMenu">
+                  <span class="close" >
                     <i class="bi bi-x"></i>
                   </span>
                   <router-link :to="{ name: 'Home' }" class="link">{{
@@ -156,11 +156,9 @@ export default {
       this.mobileNav = false;
     },
     showMenu() {
-      this.mobileNav = true;
+      this.mobileNav = !this.mobileNav;
     },
-    hideMenu() {
-      this.mobileNav = false;
-    },
+    
     changeLocale(locale) {
       this.$i18n.locale = locale;
       const html = document.documentElement; // returns the html tag
