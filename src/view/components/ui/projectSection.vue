@@ -210,6 +210,30 @@ export default {
               object-fit: cover;
             }
           }
+          .img:nth-child(1){
+            height: 300px;
+
+          }
+          .img:nth-child(2){
+            height: 150px;
+
+          }
+          .img:nth-child(3){
+            height: 150px;
+
+          }
+          .img:nth-child(4){
+            height: 300px;
+
+          }
+          .img:nth-child(5){
+            height: 150px;
+
+          }
+          .img:nth-child(6){
+            height: 300px;
+
+          }
         }
     }
   }
