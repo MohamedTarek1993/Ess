@@ -141,12 +141,12 @@
     </div>
     <div class="lower_footer">
       <div class="left_side">
-        <p>{{ $t("All copyright reserved@ESS 2022") }}</p>
+        <!-- <p>{{ $t("All copyright reserved@ESS 2022") }}</p> -->
       </div>
       <div class="right_slide">
-        {{ $t("Made With by crazy idea") }}
+        <!-- {{ $t("Made With by crazy idea") }} -->
         <br />
-        {{ $t("Think Out of the box") }}
+        <!-- {{ $t("Think Out of the box") }} -->
       </div>
     </div>
   </footer>
