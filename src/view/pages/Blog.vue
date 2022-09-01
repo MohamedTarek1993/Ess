@@ -14,11 +14,11 @@
               </li>
               <li class="breadcrumb-item">
                 <router-link :to="{ name: 'Blogs' }">{{
-                  $t("blogs")
+                  $t("blog")
                 }}</router-link>
               </li>
               <li class="breadcrumb-item active">
-                {{ DetailsBlogs.title }}
+                <span>{{ DetailsBlogs.title }}</span>
               </li>
             </ol>
           </div>
@@ -31,7 +31,7 @@
         <div class="img">
           <img :src="DetailsBlogs.image" alt="single blog" />
         </div>
-        <span class="data">{{ formatDate(DetailsBlogs.date) }}</span>
+        <span class="date">{{ formatDate(DetailsBlogs.date) }}</span>
         <h1>{{ DetailsBlogs.title }}</h1>
         <p v-html="DetailsBlogs.text"></p>
       </div>
@@ -58,7 +58,7 @@ export default {
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.post("/v1/dashboard/detailsBlog", id).then(({ data }) => {
         this.DetailsBlogs = data.data;
-        console.log(this.DetailsBlogs);
+        console.log("DetailsBlogs: " + this.DetailsBlogs);
       });
     },
 
@@ -90,7 +90,7 @@ export default {
         float: none;
         font-size: 12px;
         display: inline-block;
-        a {
+        a, span {
           font-family: "regular";
           color: var(--color-primary);
           font-size: 1rem;
@@ -116,6 +116,8 @@ export default {
       color: var(--color-fifth);
       font-size: 0.8rem;
       font-family: "regular";
+      margin-top: 2rem;
+      display: block;
     }
     h1 {
       color: var(--color-primary);

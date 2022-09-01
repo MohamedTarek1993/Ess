@@ -209,6 +209,7 @@ header {
           font-family: "bold";
           font-size: 1rem;
           text-transform: capitalize;
+          display: inline-block;
           margin: 0 1rem;
           color: var(--color-sixth);
           text-decoration: none;

@@ -7,7 +7,7 @@
           <p class="discription">{{ header.text }}</p>
           <div class="button">
             <router-link class="btn primary" :to="{ name: 'Contact' }"
-              >Contact us</router-link
+              >{{$t("Contact_Us")}}</router-link
             >
           </div>
         </div>

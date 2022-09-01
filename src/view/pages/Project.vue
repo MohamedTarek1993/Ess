@@ -86,29 +86,29 @@
                    
                 </li>
                 <li>
-                  {{ $t("Project Duration ") }} -
+                  {{ $t("Project Duration") }} -
                   <span>{{ DetailsProjects.project_details.duration }}</span>
                 </li>
                 <li>
-                  {{ $t("contractor ") }} -
+                  {{ $t("Client") }} -
                   <span>{{ DetailsProjects.project_details.client }}</span>
                 </li>
                 <li>
-                  {{ $t("Project Partner ") }} -
+                  {{ $t("contractor") }} -
                   <span
                     v-for="(contractor, index) in DetailsProjects
                       .project_details.contractor"
                     :key="index"
-                    >{{ contractor }},
+                    >{{ contractor }}
                   </span>
                 </li>
                 <li>
-                  {{ $t("Start Date") }} -
+                  {{ $t("Project Partner") }} -
                   <span
                     v-for="(partner, index) in DetailsProjects.project_details
                       .partner"
                     :key="index"
-                    >{{ partner }},
+                    >{{ partner }}
                   </span>
                 </li>
               </ul>

@@ -16,7 +16,7 @@
             }}</router-link>
           </div>
           <span>
-            <strong>{{ $t("Or simply deal") }}</strong> : {{ together.text }}
+            <strong>{{ $t("Or simply deal") }}</strong> : <span class="number">{{ together.text }}</span>
           </span>
         </div>
       </div>
@@ -33,13 +33,13 @@ export default {
       together: {},
     };
   },
-   methods: {
+  methods: {
     fetch_together_data() {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/pagesFooter").then(({ data }) => {
         this.together = data.data;
-        // console.log(this.Faq);
+        // console.log(this.together);
       });
     },
   },
@@ -62,8 +62,9 @@ export default {
   }
   h2 {
     color: var(--color-secound);
-    font-family: "meduim";
-    font-size: 2.22rem;
+    font-family: "bold";
+    font-size: 3.22rem;
+    padding: 3% 10%;
   }
   p {
     color: var(--color-fourth);
@@ -109,8 +110,8 @@ export default {
   .together h2 {
     font-size: 1.4rem;
   }
-   .together p {
-font-size: 1.2rem;
-   }
+  .together p {
+    font-size: 1.2rem;
+  }
 }
 </style>

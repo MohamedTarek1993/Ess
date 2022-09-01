@@ -159,6 +159,36 @@ export default {
         display: flex;
         margin: 1%;
         width: 48%;
+        // &:first-child {
+        //   .img {
+        //     height: 300px;
+        //   }
+        // }
+        // &:nth-child(2) {
+        //   .img {
+        //     height: 190px;
+        //   }
+        // }
+        // &:nth-child(3) {
+        //   .img {
+        //     height: 190px;
+        //   }
+        // }
+        // &:nth-child(4) {
+        //   .img {
+        //     height: 300px;
+        //   }
+        // }
+        // &:nth-child(5) {
+        //   .img {
+        //     height: 190px;
+        //   }
+        // }
+        // &:nth-child(6) {
+        //   .img {
+        //     height: 300px;
+        //   }
+        // }
 
         &::before {
           content: "";
@@ -215,8 +245,9 @@ export default {
           }
         }
         .img {
-          height: 300px;
+        
           width: 100%;
+          height: 300px;
           img {
             display: block;
             width: 100%;

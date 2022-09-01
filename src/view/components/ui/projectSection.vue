@@ -80,8 +80,8 @@ export default {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/projectIndexHeader").then(({ data }) => {
-        this.ProjectsSectionTitle = data;
-        //  console.log(this.ProjectsSection);
+        this.ProjectsSectionTitle = data.data;
+        //  console.log(this.ProjectsSectionTitle);
       });
     },
 
@@ -90,7 +90,7 @@ export default {
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/projectIndex").then(({ data }) => {
         this.ProjectsSection = data.data;
-         console.log(this.ProjectsSection);
+        //  console.log(this.ProjectsSection);
       });
     },
 
@@ -211,29 +211,21 @@ export default {
             }
           }
           .img:nth-child(1){
-            height: 300px;
 
           }
           .img:nth-child(2){
-            height: 150px;
 
           }
           .img:nth-child(3){
-            height: 150px;
 
           }
           .img:nth-child(4){
-            height: 300px;
 
           }
           .img:nth-child(5){
-            height: 150px;
-
+            
           }
-          .img:nth-child(6){
-            height: 300px;
-
-          }
+          .img:nth-child(6){}
         }
     }
   }

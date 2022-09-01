@@ -46,22 +46,22 @@
               </p>
               <ul>
                 <li>
-                  <a href="{{team.social_team.link_facebook}}" target="__blank">
+                  <a :href="team.link_facebook" target="__blank">
                     <i class="bi bi-facebook"></i
                   ></a>
                 </li>
                 <li>
-                  <a href="{{team.social_team.link_twitter}}" target="__blank">
+                  <a :href="team.link_twitter" target="__blank">
                     <i class="bi bi-twitter"></i
                   ></a>
                 </li>
                 <li>
-                  <a href="{{team.social_team.link_linkedin}}" target="__blank">
+                  <a :href="team.link_linkedin" target="__blank">
                     <i class="bi bi-linkedin"></i
                   ></a>
                 </li>
                 <li>
-                  <a href="{{team.social_team.link_instgram}}" target="__blank">
+                  <a :href="team.link_instgram" target="__blank">
                     <i class="bi bi-instagram"></i
                   ></a>
                 </li>
@@ -99,7 +99,7 @@ export default {
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/teamSection").then(({ data }) => {
         this.TeamSection = data.data;
-        //  console.log(this.why);
+         console.log(this.TeamSection);
       });
     },
   },

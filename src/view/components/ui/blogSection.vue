@@ -14,7 +14,7 @@
             :key="index"
           >
             <!-- <router-link class="link" :to="`/blog/${blogs.id}`"> -->
-            <router-link class="link" :to="`/blog/2`">
+            <router-link class="link" :to="`/blog/${blogs.id}`">
               <div class="card">
                 <div class="img">
                   <img :src="blogs.image" />

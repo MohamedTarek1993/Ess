@@ -157,7 +157,7 @@ p {
   flex-direction: column;
   h2 {
     font-size: 2.2rem;
-    font-family: "meduim";
+    font-family: "bold";
     color: var(--color-text);
   }
   p {
@@ -317,7 +317,7 @@ input {
     }
   }
   h2 {
-    font-family: "semibold";
+    font-family: "bold";
     color: var(--color-primary);
     font-size: 1.9rem;
     padding: 1% 0;
@@ -355,7 +355,7 @@ input {
     }
   }
   h2 {
-    font-family: "semibold";
+    font-family: "bold";
     color: var(--color-primary);
     font-size: 1.9rem;
     padding: 1% 0;
@@ -364,8 +364,9 @@ input {
     font-family: "regular";
     color: var(--color-fourth);
     font-size: 1.4rem;
-    text-align: start;
-    padding: 1% 0;
+    text-align: center;
+    padding: 0 12%;
+
   }
 }
 .button {

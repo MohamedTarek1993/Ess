@@ -18,7 +18,7 @@
                 />
               </div>
               <div class="text">
-                <h6> {{ $t("Our Vission") }}</h6>
+                <h6> {{ $t("vision") }}</h6>
                 <p>{{ About.our_vision_text }}</p>
               </div>
             </div>
@@ -28,7 +28,7 @@
                 />
               </div>
               <div class="text">
-                <h6> {{ $t("Our Mission ") }}</h6>
+                <h6> {{ $t("mission") }}</h6>
                 <p>{{ About.our_mission_text }}</p>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default {
       flex-direction: row;
       .icon {
         width: 50px;
-        height: 40px;
+        height: 47px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -113,7 +113,7 @@ export default {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
-        padding-left: 2%;
+        padding-inline-start: 4%;
         h6 {
           font-family: "semibold";
           color: var(--color-primary);

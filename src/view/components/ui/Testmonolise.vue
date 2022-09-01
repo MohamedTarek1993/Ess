@@ -126,6 +126,7 @@ export default {
         border: none;
         border-radius: 10px;
         box-shadow: -15px 30px 60px rgba($color: #9a9a9a, $alpha: 0.22);
+        height: 220px;
         .img {
           position: absolute;
           top: -30px;

@@ -41,12 +41,15 @@
         <div class="col-lg-3 col-md-6 col-12">
           <div class="important-information">
             <h2 class="text">{{ $t("Addresses") }}</h2>
-            <p>
-              <span>{{ $t("Address") }} </span>:{{ sitting.address }}
-            </p>
             <div class="d-flex">
-              <p>{{ $t("Phone Num") }} :</p>
-              <p>
+            <p class="email_footer">{{ $t("Address") }} :</p>
+            <p class="data_footer">
+              {{ sitting.address }}
+            </p>
+            </div>
+            <div class="d-flex">
+              <p class="email_footer">{{ $t("Phone Num") }} :</p>
+              <p class="data_footer">
                 <a
                   v-for="(number, index) in sitting.numbers"
                   :key="index"
@@ -56,8 +59,8 @@
               </p>
             </div>
             <div class="d-flex">
-              <p>{{ $t("E-mail") }} :</p>
-              <p>
+              <p class="email_footer">{{ $t("E-mail") }} :</p>
+              <p class="data_footer">
                 <a
                   v-for="(email, index) in sitting.emails"
                   :key="index"
@@ -141,12 +144,12 @@
     </div>
     <div class="lower_footer">
       <div class="left_side">
-        <!-- <p>{{ $t("All copyright reserved@ESS 2022") }}</p> -->
+        <p>All copyright reserved@ESS 2022</p>
       </div>
       <div class="right_slide">
-        <!-- {{ $t("Made With by crazy idea") }} -->
+        Made With by <a href="https://crazyideaco.com">crazy idea</a> 
         <br />
-        <!-- {{ $t("Think Out of the box") }} -->
+        Think Out of the box
       </div>
     </div>
   </footer>
@@ -260,7 +263,7 @@ footer {
       p {
         &:first-child {
           // width: 30%;
-          font-size: 1.1rem;
+          font-size: .8rem;
           color: var(--color-white);
           font-family: "bold";
         }
@@ -349,6 +352,12 @@ footer {
       font-family: "semibold";
       font-size: 1rem;
       text-align: center;
+      a {
+        color: #a8a8a8;
+        font-family: "semibold";
+        font-size: 1rem;
+        text-align: center;
+      }
     }
   }
 }

@@ -53,6 +53,26 @@ body:lang(ar) {
       }
     }
   }
+  .single_project .page-title .breadcrumb{
+    text-align: right;
+  }
+  .breadcrumb-item+.breadcrumb-item::before{
+    float: right;
+    padding-left: .5rem;
+    font-size: 'bold';
+  }
+  .breadcrumb-item+.breadcrumb-item{
+    padding-right: .5rem;
+  }
+  .together span .number {
+    unicode-bidi: plaintext;
+  }
+  .email_footer{
+    width: 27%;
+  }
+  .data_footer{
+    width: 63%;
+  }
 }
 
 // lang en

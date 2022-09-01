@@ -54,10 +54,12 @@
         />
       </div>
     </div>
+    
     <div class="button">
       <button type="button" @click="fetch_contact_data" class="btn secondary">
         {{ $t("Contact_Us") }}
       </button>
+      <p>{{$t("")}}</p>
     </div>
   </form>
 </template>

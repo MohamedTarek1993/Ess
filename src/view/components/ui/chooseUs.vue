@@ -27,15 +27,13 @@
           <div class="card_box">
             <div class="row">
               <div
-                class="col-lg-6 col-md-6 col-12"
+                class="col-lg-6 col-md-6 col-12 xd"
                 v-for="(WhyCard, index) in why.why_cards"
                 :key="index"
               >
                 <div class="card">
                   <div class="img">
-                    <img
-                      :src="WhyCard.image"
-                    />
+                    <img :src="WhyCard.image" />
                   </div>
                   <h4>{{ WhyCard.title }}</h4>
                   <p>{{ WhyCard.text }}</p>
@@ -60,8 +58,8 @@ export default {
       why: {},
     };
   },
-   methods: {
-   fetch_choise_data() {
+  methods: {
+    fetch_choise_data() {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/whySection").then(({ data }) => {
@@ -70,9 +68,9 @@ export default {
       });
     },
   },
-  created(){
+  created() {
     this.fetch_choise_data();
-  }
+  },
 };
 </script>
 
@@ -118,14 +116,24 @@ export default {
     }
   }
   .card_box {
+    .xd {
+      &:nth-child(odd) {
+        .card {
+          transform: translateY(-26px);
+        }
+      }
+    }
+
     .card {
       display: flex;
+      transform: translateY(0px);
       justify-content: start;
       align-items: flex-start;
       padding: 7% 3%;
       margin-bottom: 3%;
       border: none;
       box-shadow: 0px 12px 48px rgba($color: #6a6a6a, $alpha: 0.16);
+       height: 300px;
       .img {
         width: 50px;
         height: 50px;
@@ -152,9 +160,6 @@ export default {
         color: var(--color-fourth);
         font-size: 1rem;
         text-align: start;
-      }
-      &:nth-child(odd) {
-        transform: translateY(-10px);
       }
     }
   }

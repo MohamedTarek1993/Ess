@@ -1,11 +1,12 @@
 <template>
   <section class="service_section">
     <div class="container">
-      <div class="main_heading">
+      <div class="main-title-center">
         <h6>{{$t("Services")}}</h6>
         <h2>{{ ServicesSection.title }}</h2>
         <p>{{ ServicesSection.text }}</p>
       </div>
+
       <swiper   
         :slidesPerView="4"
         :spaceBetween="10"
@@ -124,6 +125,8 @@ export default {
       background-color: transparent;
       border: none;
       transition: .3s all ease-in-out;
+      height: 400px;
+
       &:hover{
         background-color: var(--color-white);
         box-shadow: 0px 7px 60px rgba($color: #7A7A7A, $alpha: .16);
@@ -154,6 +157,8 @@ export default {
         font-family: "regular";
         color: var(--color-fourth);
         font-size: 1rem;
+        height: 200px;
+    overflow: hidden;
       }
     }
   }
