@@ -49,7 +49,7 @@
         <textarea
           type="text"
           class="form-control"
-          :placeholder="$t('Tell us about yourself ')"
+          :placeholder="$t('Tell us about yourself')"
           v-model="message"
         />
       </div>

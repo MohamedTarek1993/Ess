@@ -31,7 +31,7 @@
               <img src="../../assets/image/contact2.webp" alt="contact" />
             </div>
 
-            <h4>{{ $t("Our Location ") }}</h4>
+            <h4>{{ $t("Our Location") }}</h4>
             <p>{{ Sitting.address }}</p>
           </div>
         </div>
