@@ -62,7 +62,7 @@
               <i class="bi bi-list"></i>
               <transition name="mobile-icon">
                 <ul v-show="mobileNav" class="mobile-nav">
-                  <span class="close" >
+                  <span class="close"  >
                     <i class="bi bi-x"></i>
                   </span>
                   <router-link :to="{ name: 'Home' }" class="link">{{
