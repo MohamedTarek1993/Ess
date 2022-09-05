@@ -1,6 +1,81 @@
 <template>
-  <header>
-    <nav>
+  <nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container">
+      <router-link class="navbar-brand" :to="{ name: 'Home' }">
+        <img src="../../../assets/image/logo.png" alt="logo" />
+      </router-link>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link :to="{ name: 'Home' }" class="nav-link active">
+              {{ $t("home") }}</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'About' }" class="nav-link">
+              {{ $t("about") }}</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'Projects' }" class="nav-link">
+              {{ $t("Our_Projects") }}
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'Blogs' }" class="nav-link">
+              {{ $t("blog") }}</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'Contact' }" class="nav-link">
+              {{ $t("contact") }}
+            </router-link>
+          </li>
+        </ul>
+        <div class="dropdown lang">
+          <a
+            class="btn dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-globe2"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li>
+              <a
+                class="dropdown-item"
+                v-for="entry in languages"
+                :key="entry.title"
+                @click="changeLocale(entry.language)"
+                :iso="entry.flag"
+                v-bind:squared="false"
+              >
+                <flag :iso="entry.flag" v-bind:squared="false" />
+                {{ entry.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- <nav>
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-6">
@@ -13,19 +88,19 @@
           <div class="col-lg-8 col-6">
             <div class="nav-link">
               <ul v-show="!mobile">
-                <router-link :to="{ name: 'Home' }" class="link-navbar">
+                <router-link :to="{ name: 'Home' }" class="nav-link">
                   {{ $t("home") }}</router-link
                 >
-                <router-link :to="{ name: 'About' }" class="link-navbar">
+                <router-link :to="{ name: 'About' }" class="nav-link">
                   {{ $t("about") }}</router-link
                 >
-                <router-link :to="{ name: 'Projects' }" class="link-navbar">
+                <router-link :to="{ name: 'Projects' }" class="nav-link">
                   {{ $t("Our_Projects") }}
                 </router-link>
-                <router-link :to="{ name: 'Blogs' }" class="link-navbar">
+                <router-link :to="{ name: 'Blogs' }" class="nav-link">
                   {{ $t("blog") }}</router-link
                 >
-                <router-link :to="{ name: 'Contact' }" class="link-navbar">
+                <router-link :to="{ name: 'Contact' }" class="nav-link">
                   {{ $t("contact") }}
                 </router-link>
               </ul>
@@ -62,7 +137,7 @@
               <i class="bi bi-list"></i>
               <transition name="mobile-icon">
                 <ul v-show="mobileNav" class="mobile-nav">
-                  <span class="close"  >
+                  <span class="close">
                     <i class="bi bi-x"></i>
                   </span>
                   <router-link :to="{ name: 'Home' }" class="link">{{
@@ -116,8 +191,7 @@
           </div>
         </div>
       </div>
-    </nav>
-  </header>
+    </nav> -->
 </template>
 
 <script>
@@ -126,9 +200,6 @@ export default {
   components: {},
   data() {
     return {
-      mobile: null,
-      mobileNav: null,
-      windowWidth: null,
       setting: {},
       profile: {},
       auth: false,
@@ -139,26 +210,26 @@ export default {
     };
   },
   created() {
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen();
+    // window.addEventListener("resize", this.checkScreen);
+    // this.checkScreen();
     // changeLocale(locale)
     const html = document.documentElement; // returns the html tag
     html.setAttribute("lang", this.$i18n.locale);
   },
   methods: {
-    checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 1023) {
-        this.mobile = true;
-        return;
-      }
-      this.mobile = false;
-      this.mobileNav = false;
-    },
-    showMenu() {
-      this.mobileNav = !this.mobileNav;
-    },
-    
+    // checkScreen() {
+    //   this.windowWidth = window.innerWidth;
+    //   if (this.windowWidth <= 1023) {
+    //     this.mobile = true;
+    //     return;
+    //   }
+    //   this.mobile = false;
+    //   this.mobileNav = false;
+    // },
+    // showMenu() {
+    //   this.mobileNav = !this.mobileNav;
+    // },
+
     changeLocale(locale) {
       this.$i18n.locale = locale;
       const html = document.documentElement; // returns the html tag
@@ -171,151 +242,165 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
-  background: var(--color-primary);
-  // padding: 0 25px;
-  z-index: 99;
-  //   display: flex;
-  //   justify-content: space-between;
+//start navbar
 
-  nav {
-    // display: flex;
-    padding: 1% 0;
-    top: 0;
-    width: 100%;
-    background: var(--color-primary);
+.navbar {
+  background-color: var(--color-primary);
+  z-index: 100;
+   
+  transition: 0.25s all ease-in-out;
 
-    .logo {
-      align-items: center;
-      img {
-        width: 130px;
-        height: 52px;
-      }
-    }
-    .nav-link {
-      position: relative;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+  .navbar-brand {
+    width: 170px;
+    height: 90px;
+    img {
       width: 100%;
-      text-transform: capitalize;
-      ul {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        .link-navbar {
+      height: 100%;
+    }
+  }
+  .navbar-collapse {
+    .navbar-nav {
+      width: 85%;
+      justify-content: center;
+      .nav-item {
+        transition: 0.35s all ease-in;
+        position: relative;
+
+        .nav-link {
+          font-size: 1.2rem;
+          font-family: "regular";
+          color: var(--color-white);
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+          transition: 0.25s all;
+          &:hover {
+            color: var(--color-text);
+            border-bottom: 1px solid white;
+          }
+        }
+        .nav-link.active {
+          color: var(--color-text);
           font-family: "bold";
-          font-size: 1rem;
-          text-transform: capitalize;
-          display: inline-block;
-          margin: 0 1rem;
-          color: var(--color-sixth);
-          text-decoration: none;
           transition: 0.25s all ease-in-out;
+          border-bottom: 1px solid var(--color-text);
+
           &:hover {
             color: var(--color-white);
+            border-bottom: 1px solid white;
           }
-        }
-        .link-navbar.active {
-          color: var(--color-white);
         }
       }
     }
+
     .dropdown {
+      widows: 20%;
       .dropdown-toggle {
-        border: 1px solid var(--color-white);
-        border-radius: 5px;
-        transition: 0.25s all ease-in-out;
-        &:after {
-          color: var(--color-white);
-          margin-right: 22%;
-          transition: 0.25s all ease-in-out;
-        }
-        &:hover {
-          background: var(--color-white);
-          &:after {
-            color: var(--color-primary);
-          }
-          i {
-            color: var(--color-primary);
-          }
-        }
-        i {
-          color: white;
-          transition: 0.25s all ease-in-out;
+        background-color: transparent;
+        border: 1px solid white;
+        font-size: 1rem;
+        font-family: "regular";
+        color: var(--color-white);
+        i{
+          margin-inline-end: 17%;
+          font-size: 1.5rem;
         }
       }
       .dropdown-menu {
-        li {
-          cursor: pointer;
-          .dropdown-item {
-            font-family: "regular";
-            color: var(--color-secound);
-            text-align: center;
-          }
+        min-width: 4rem;
+        .dropdown-item {
+          font-family: "regular";
+          font-size: 0.8rem;
+          color: var(--color-text);
         }
       }
     }
   }
-  .mobile-menu {
-    cursor: pointer;
-    position: absolute;
-    top: 32px;
-    right: 25px;
-    height: 35px;
-    width: 35px;
-    i {
-      font-size: 30px;
-      color: var(--color-white);
-      // border: 1px solid var(--color-white);
-      border-radius: 8px;
-    }
-  }
-  .mobile-nav {
-    padding: 20px;
-    width: 70%;
-    max-width: 250px;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    height: 100%;
-    background: rgba($color: #18261e, $alpha: 1);
-    top: 0;
-    z-index: 999;
-    right: 0;
-    .link {
-      padding: 15px 0;
-      color: white;
-      text-transform: capitalize;
-    }
-    .close {
-      right: 0;
-      left: 20px;
-      i {
+}
+.navbar.change {
+  background-color: rgba($color: #f56542, $alpha: 0.7);
+  .navbar-nav {
+    width: 100%;
+    .nav-item {
+      position: relative;
+
+      .nav-link {
+        padding-right: 1.8rem;
+        padding-left: 1.8rem;
+        color: var(--color-white);
       }
     }
   }
-  @media (max-width: 991.98px) {
-    .bi-globe2 {
-      font-size: 0.9rem !important;
-      padding: 0.5rem !important;
-      z-index: 10000 !important;
-    }
-  }
-  //   animation of nav mobile
-  .mobile-icon-enter-active,
-  .mobile-icon-leave-active {
-    transition: all 1s ease;
-  }
-  .mobile-icon-enter,
-  .mobile-icon-leave {
-    transform: translateX(+250px);
-  }
-  .mobile-icon-enter-to {
-    transform: translateX(0px);
-  }
-  .mobile-icon-leave-to {
-    transform: translateX(+250px);
-  }
 }
+
+/* hamburger icon */
+.navbar .navbar-toggler {
+  cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; */
+  border: 1px solid var(--color-white);
+  width: 1.8em !important;
+  height: 1.8em !important;
+  padding: 0 7px 2px 7px !important;
+  outline: none !important;
+}
+.navbar .navbar-toggler-icon {
+  transition: all 0.2s ease-out;
+  transform: rotate(0 deg);
+}
+.navbar .navbar-toggler-icon,
+.navbar .navbar-toggler-icon::before,
+.navbar .navbar-toggler-icon::after {
+  width: 1em !important;
+  height: 2px !important;
+  /* padding: 0 0 0 0.15em !important; */
+  display: flex;
+  background-image: none;
+  background-color: var(--color-white);
+  position: absolute !important;
+  transition: all 0.2s ease-in;
+}
+.navbar .navbar-toggler-icon::before {
+  content: "";
+  display: block;
+  top: -0.3em;
+}
+.navbar .navbar-toggler-icon::after {
+  content: "";
+  display: block;
+  bottom: -0.3em;
+}
+.navbar .navbar-toggler:focus {
+  /* outline: none !important; */
+  box-shadow: none;
+  cursor: pointer;
+  border: 1px solid var(--color-white) !important;
+  width: 1.8em !important;
+  height: 1.8em !important;
+  padding: 0 7px 2px !important;
+}
+.active-hamburger .navbar-toggler-icon {
+  transition: 0.2s;
+  transform: rotate(405deg); /*45+360 */
+}
+.active-hamburger .navbar-toggler-icon::before {
+  top: 0;
+  opacity: 0;
+}
+.active-hamburger .navbar-toggler-icon::after {
+  transition: 0.2s;
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  top: 0;
+  left: 0;
+}
+/* hamburger icon */
+//finish navbar
 </style>
+

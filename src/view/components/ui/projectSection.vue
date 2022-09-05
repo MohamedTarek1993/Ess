@@ -1,5 +1,5 @@
 <template>
-  <section class="project_section">
+  <section class="project_section" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="main-title-center">
         <h6>{{$t("Projects")}}</h6>
@@ -238,6 +238,14 @@ export default {
 
 
     }
+  }
+}
+@media (max-width: 425.98px) {
+  .project_section .tab-content .boxes .box-1 .img{
+    height: 220px;
+  }
+  .project_section .tab-content .boxes .box-1{
+    width: 90%;
   }
 }
 </style>

@@ -14,7 +14,7 @@
           >
             <router-link :to="`/blog/${blogs.id}`">
               <div class="img">
-                 <img :src="blogs.image" />
+                <img :src="blogs.image" />
               </div>
               <div class="mx-4">
                 <span class="data">{{ formatDate(blogs.date) }}</span>
@@ -26,9 +26,16 @@
         </div>
         <div class="row">
           <pagination
-          :data="BlogsSection.blogs"
-          class="mx-auto d-flex align-items-center justify-content-center pagination"
-          @pagination-change-page="fetch_blogs_data">
+            :data="BlogsSection.blogs"
+            class="
+              mx-auto
+              d-flex
+              align-items-center
+              justify-content-center
+              pagination
+            "
+            @pagination-change-page="fetch_blogs_data"
+          >
             <span slot="prev-nav">&lt;</span>
             <span slot="next-nav">&gt;</span>
           </pagination>
@@ -50,13 +57,13 @@ export default {
       BlogsSection: {
         blogs: {
           data: [],
-        }
+        },
       },
     };
   },
   components: {
     pagination,
-  }, 
+  },
   methods: {
     fetch_blogs_data(page = 1) {
       const newLocal = this.$i18n.locale;
@@ -143,14 +150,27 @@ export default {
         }
       }
     }
-    .pagination{
-        .sr-only{
-          display: none !important;
+    .pagination {
+      .sr-only {
+        display: none !important;
       }
     }
   }
 }
-.sr-only{
-        display: none !important;
-      }
+.sr-only {
+  display: none !important;
+}
+
+@media (max-width: 425.98px) {
+  .blogs_collection .content .col:first-child a .img{
+    width: 100%;
+    height: 185px;
+  }
+  .blogs_collection .content .col:first-child a h4{
+  font-size: 1.1rem;
+  }
+  .blogs_collection .content .col:first-child a p{
+    font-size: .9rem;
+  }
+}
 </style>

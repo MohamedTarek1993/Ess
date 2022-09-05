@@ -42,10 +42,10 @@
           <div class="important-information">
             <h2 class="text">{{ $t("Addresses") }}</h2>
             <div class="d-flex">
-            <p class="email_footer">{{ $t("Address") }} :</p>
-            <p class="data_footer">
-              {{ sitting.address }}
-            </p>
+              <p class="email_footer">{{ $t("Address") }} :</p>
+              <p class="data_footer">
+                {{ sitting.address }}
+              </p>
             </div>
             <div class="d-flex">
               <p class="email_footer">{{ $t("Phone Num") }} :</p>
@@ -76,43 +76,43 @@
             <h2 class="text">{{ $t("Quick Links") }}</h2>
             <ul class="link">
               <li>
-                <router-link class="link_footer" :to="{ name: 'Home' }"
-                  >  {{ $t("home") }}</router-link
+                <router-link class="link_footer" :to="{ name: 'Home' }">
+                  {{ $t("home") }}</router-link
                 >
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Home' }"
-                  > {{ $t("Our_Projects") }}</routerLink
+                <routerLink class="link_footer" :to="{ name: 'Home' }">
+                  {{ $t("Our_Projects") }}</routerLink
                 >
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Contact' }"
-                  >{{ $t("contact") }}</routerLink
+                <routerLink class="link_footer" :to="{ name: 'Contact' }">{{
+                  $t("contact")
+                }}</routerLink>
+              </li>
+              <li>
+                <routerLink class="link_footer" :to="{ name: 'Privacy' }">
+                  {{ $t("privacy") }}</routerLink
                 >
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Privacy' }"
-                  > {{ $t("privacy") }}</routerLink
+                <routerLink class="link_footer" :to="{ name: 'About' }">
+                  {{ $t("about") }}</routerLink
                 >
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'About' }"
-                  > {{ $t("about") }}</routerLink
+                <routerLink class="link_footer" :to="{ name: 'Blogs' }">{{
+                  $t("blog")
+                }}</routerLink>
+              </li>
+              <li>
+                <routerLink class="link_footer" :to="{ name: 'Faq' }">
+                  {{ $t("faq") }}</routerLink
                 >
               </li>
               <li>
-                <routerLink class="link_footer" :to="{ name: 'Blogs' }"
-                  >{{ $t("blog") }}</routerLink
-                >
-              </li>
-              <li>
-                <routerLink class="link_footer" :to="{ name: 'Faq' }"
-                  > {{ $t("faq") }}</routerLink
-                >
-              </li>
-              <li>
-                <routerLink class="link_footer" :to="{ name: 'Terms' }"
-                  > {{ $t("terms") }}</routerLink
+                <routerLink class="link_footer" :to="{ name: 'Terms' }">
+                  {{ $t("terms") }}</routerLink
                 >
               </li>
             </ul>
@@ -147,7 +147,7 @@
         <p>All copyright reserved@ESS 2022</p>
       </div>
       <div class="right_slide">
-        Made With by <a href="https://crazyideaco.com">crazy idea</a> 
+        Made With by <a href="https://crazyideaco.com">crazy idea</a>
         <br />
         Think Out of the box
       </div>
@@ -189,8 +189,7 @@ export default {
             title: data.msg,
             timer: 1500,
           });
-        }
-        else {
+        } else {
           Swal.fire({
             position: "top-center",
             icon: "error",
@@ -263,7 +262,7 @@ footer {
       p {
         &:first-child {
           // width: 30%;
-          font-size: .8rem;
+          font-size: 0.8rem;
           color: var(--color-white);
           font-family: "bold";
         }
@@ -366,6 +365,9 @@ footer {
     .lower_footer {
       margin-top: 6%;
     }
+    footer .social_icon li {
+      width: 12%;
+    }
   }
 }
 @media (max-width: 425.98px) {
@@ -374,6 +376,14 @@ footer {
   }
   .button .secondary {
     padding: 1%;
+  }
+  footer .social_icon li {
+    width: 8%;
+  }
+  footer .lower_footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 0;
   }
 }
 </style>

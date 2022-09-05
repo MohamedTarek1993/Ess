@@ -160,5 +160,9 @@ export default {
   .main-title-center p {
     font-size: 1rem;
   }
+  .information .card{
+    margin-top: 19%;
+  }
 }
+
 </style>

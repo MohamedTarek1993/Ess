@@ -137,5 +137,8 @@ export default {
   }
 }
 @media (max-width: 425.98px) {
+  .single_blog .content .img{
+    height: 300px;
+  }
 }
 </style>

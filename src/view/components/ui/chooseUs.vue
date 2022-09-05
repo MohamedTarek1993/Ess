@@ -1,5 +1,5 @@
 <template>
-  <section class="choose_us">
+  <section class="choose_us" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-12">
@@ -27,7 +27,7 @@
           <div class="card_box">
             <div class="row">
               <div
-                class="col-lg-6 col-md-6 col-12 xd"
+                class="col-lg-6 col-md-6 col-12 xd" data-aos="fade-up" data-aos-duration="3000" data-aos-easing="linear"
                 v-for="(WhyCard, index) in why.why_cards"
                 :key="index"
               >
@@ -172,12 +172,27 @@ export default {
     margin-top: 4%;
   }
 }
+@media (max-width: 768.98px) {
+  .choose_us .button{
+    margin-bottom: 4%;
+  }
+}
 @media (max-width: 425.98px) {
   .main-title h2 {
     font-size: 1.1rem;
   }
   .main-title-center p {
     font-size: 0.9rem;
+  }
+  .choose_us ul{
+    padding-inline-start: 4%;
+  }
+  .choose_us .card_box .card{
+    height: 250px;
+    margin-bottom: 3%;
+  }
+  .choose_us .card_box .xd:nth-child(odd) .card{
+    transform: translateY(0px);
   }
 }
 </style>

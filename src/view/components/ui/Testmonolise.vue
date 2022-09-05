@@ -1,5 +1,5 @@
 <template>
-  <section class="testmonlies">
+  <section class="testmonlies" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-12">

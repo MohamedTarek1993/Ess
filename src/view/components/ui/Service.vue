@@ -1,5 +1,5 @@
 <template>
-  <section class="service_section">
+  <section class="service_section" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="main-title-center">
         <h6>{{$t("Services")}}</h6>
@@ -161,6 +161,12 @@ export default {
     overflow: hidden;
       }
     }
+  }
+}
+@media (max-width: 768.98px) {
+  .service_section .swiper .card .img {
+    width: 63px;
+    height: 69px;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="team_section">
+  <section class="team_section" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="main-title-center">
         <span>{{$t("Our Team")}}</span>

@@ -2,17 +2,27 @@
   <section class="hero_section">
     <div class="container">
       <div class="content">
-        <div class="header">
+        <div
+          class="header"
+          data-aos="fade-right"
+          data-aos-duration="3000"
+          data-aos-easing="linear"
+        >
           <h2 class="text">{{ header.title }}</h2>
           <p class="discription">{{ header.text }}</p>
           <div class="button">
-            <router-link class="btn primary" :to="{ name: 'Contact' }"
-              >{{$t("Contact_Us")}}</router-link
-            >
+            <router-link class="btn primary" :to="{ name: 'Contact' }">{{
+              $t("Contact_Us")
+            }}</router-link>
           </div>
         </div>
 
-        <div class="img">
+        <div
+          class="img"
+          data-aos="fade-left"
+          data-aos-duration="3000"
+          data-aos-easing="linear"
+        >
           <img :src="header.image" />
         </div>
       </div>
@@ -22,6 +32,11 @@
 
 <script>
 import axios from "axios";
+import { onMounted } from "vue";
+import AOS from "aos";
+onMounted(() => {
+  AOS.init();
+});
 export default {
   name: "Hero",
   data() {
@@ -30,7 +45,7 @@ export default {
     };
   },
   methods: {
-   fetch_hero_data() {
+    fetch_hero_data() {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/header").then(({ data }) => {
@@ -39,9 +54,9 @@ export default {
       });
     },
   },
-  created(){
+  created() {
     this.fetch_hero_data();
-  }
+  },
 };
 </script>   
 
@@ -119,6 +134,11 @@ export default {
         }
       }
     }
+  }
+}
+@media (max-width: 768.98px) {
+  .hero_section {
+    height: 70vh;
   }
 }
 @media (max-width: 425.98px) {

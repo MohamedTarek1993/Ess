@@ -157,6 +157,10 @@ export default {
   .about_section .img {
     height: 200px;
   }
+  .about_section .boxes .box .icon{
+    height: 40px;
+
+  }
 }
 </style>
 

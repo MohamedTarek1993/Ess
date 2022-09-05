@@ -8,6 +8,11 @@
 </template>
 
 <script>
+  import { onMounted } from "vue";
+import AOS from "aos";
+onMounted(() => {
+    AOS.init();
+});
 import buttonTop from "./view/components/static/buttonTop.vue";
 import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";

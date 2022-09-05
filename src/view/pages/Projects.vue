@@ -55,7 +55,13 @@
           <div class="row">
             <pagination
               :data="content.projects"
-              class="mx-auto d-flex align-items-center justify-content-center pagination"
+              class="
+                mx-auto
+                d-flex
+                align-items-center
+                justify-content-center
+                pagination
+              "
               @pagination-change-page="fetch_tab_project_data"
             >
               <span slot="prev-nav">&lt;</span>
@@ -159,37 +165,6 @@ export default {
         display: flex;
         margin: 1%;
         width: 48%;
-        // &:first-child {
-        //   .img {
-        //     height: 300px;
-        //   }
-        // }
-        // &:nth-child(2) {
-        //   .img {
-        //     height: 190px;
-        //   }
-        // }
-        // &:nth-child(3) {
-        //   .img {
-        //     height: 190px;
-        //   }
-        // }
-        // &:nth-child(4) {
-        //   .img {
-        //     height: 300px;
-        //   }
-        // }
-        // &:nth-child(5) {
-        //   .img {
-        //     height: 190px;
-        //   }
-        // }
-        // &:nth-child(6) {
-        //   .img {
-        //     height: 300px;
-        //   }
-        // }
-
         &::before {
           content: "";
           top: 0;
@@ -245,7 +220,6 @@ export default {
           }
         }
         .img {
-        
           width: 100%;
           height: 300px;
           img {
@@ -265,6 +239,14 @@ export default {
       padding: 1%;
       width: 32%;
     }
+  }
+}
+@media (max-width: 425.98px) {
+  .project .tab-content .boxes .box-1 .img {
+    height: 220px;
+  }
+  .project .tab-content .boxes .box-1 {
+    width: 90%;
   }
 }
 </style>

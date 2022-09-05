@@ -4,11 +4,14 @@ import router from './routers.js';
 // Import Bootstrap an BootstrapVue CSS files
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
+// importing AOS css style globally
+// import 'aos/dist/aos.css'
 import { createI18n } from 'vue-i18n'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import FlagIcon from 'vue-flag-icon'
 
 
@@ -64,4 +67,5 @@ app.use(router);
 app.use(VueSweetalert2);
 app.use(i18n);
 app.use(FlagIcon);
+app.use(AOS.init());
 app.mount('#app');

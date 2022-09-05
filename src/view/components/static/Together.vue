@@ -1,5 +1,5 @@
 <template>
-  <section class="together">
+  <section class="together" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="row justify-content-center align-items-center text-center">
         <div class="col-lg-8 col-sm-12">

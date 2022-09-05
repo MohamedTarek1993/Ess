@@ -1,5 +1,5 @@
 <template>
-  <section class="blog_section">
+  <section class="blog_section" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <div class="main-title-center">
         <h6>{{ $t("Blog") }}</h6>

@@ -1,5 +1,5 @@
 <template>
-  <section class="pranter">
+  <section class="pranter" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
     <div class="container">
       <h2>{{ $t("paranter_title") }}</h2>
       <swiper
@@ -99,4 +99,11 @@ export default {
     }
   }
 }
+@media (max-width: 768.98px) {
+  .pranter .img {
+    width: 100px;
+    height: 101px;
+  }
+}
+
 </style>

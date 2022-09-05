@@ -149,34 +149,6 @@ export default {
   data() {
     return {
       DetailsProjects: {
-        //   id: 1,
-        //   image_header: "blog3",
-        //   title:
-        //     "Suwaira military airport low volrage panels and lighting system",
-        //   text: "Our Engineering office is your right destination when you are looking for professional designs and electrical engineering solutions, we are devoting years of experience to come up with efficient, creative, and cost-effective solutions that suit every client.",
-        //   images: [
-        //     {
-        //       image: "project1",
-        //     },
-        //     {
-        //       image: "project2",
-        //     },
-        //     {
-        //       image: "project3",
-        //     },
-        //     {
-        //       image: "project4",
-        //     },
-        //   ],
-        //   description: "this is content",
-        //   image_details: "project2",
-        //   ProjectDetails: {
-        //     start_date: "22 march , 2022",
-        //     duration: "3 months",
-        //     client: "Adel Ahmed",
-        //     contractor: ["Zaid Shakir", "Haider Ghazi"],
-        //     partner: ["Zaid Shakir", "Haider Ghazi"],
-        //   },
       },
     };
   },
@@ -332,6 +304,12 @@ export default {
     width: 70%;
     height: 330px;
   }
+  .single_project .mySwiper .img{
+    height: 260px;
+  }
+  .single_project .lower_content .card_box{
+    width: 100%;
+  }
 }
 @media (max-width: 425.98px) {
   .single_project .lower_content .card_box {
@@ -349,6 +327,10 @@ export default {
   }
   .single_project .upper_content h1 {
     font-size: 1.3rem;
+  }
+  .single_project .lower_content .ditals_img {
+    height: 270px;
+
   }
 }
 </style>
