@@ -1,5 +1,10 @@
 <template>
-  <section class="testmonlies" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
+  <section
+    class="testmonlies"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+    data-aos-easing="linear"
+  >
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-12">
@@ -10,15 +15,10 @@
               <p>{{ OpinionsSection.text }}</p>
             </div>
             <swiper
-              :slidesPerView="2"
-              :spaceBetween="10"
               :loop="true"
               :autoplay="{
-                delay: 2500,
+                delay: 1500,
                 disableOnInteraction: false,
-              }"
-              :pagination="{
-                clickable: true,
               }"
               :breakpoints="{
                 '320': {
@@ -34,6 +34,7 @@
                   spaceBetween: 30,
                 },
               }"
+              :modules="modules"
               class="swiper"
             >
               <swiper-slide
@@ -42,9 +43,7 @@
               >
                 <div class="card">
                   <div class="img">
-                    <img
-                      :src='opinions.image'
-                    />
+                    <img :src="opinions.image" />
                   </div>
                   <div class="quete">
                     <img src="../../../assets/image/quet.png" alt="quete" />
@@ -57,7 +56,7 @@
             </swiper>
           </div>
         </div>
-        <div class="col-lg-6 col-12" >
+        <div class="col-lg-6 col-12">
           <div class="map">
             <img src="../../../assets/image/Map.png" alt="maps" />
           </div>
@@ -71,11 +70,10 @@
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
-
+import "swiper/css";
 //import axios
 import axios from "axios";
-
+import { Autoplay } from "swiper";
 export default {
   name: "Testmonolise",
   components: {
@@ -84,22 +82,27 @@ export default {
   },
   data() {
     return {
-      OpinionsSection: { },
+      OpinionsSection: {},
     };
   },
-    methods: {
-   fetch_opnion_data() {
+  setup() {
+    return {
+      modules: [Autoplay],
+    };
+  },
+  methods: {
+    fetch_opnion_data() {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/opinionSection").then(({ data }) => {
         this.OpinionsSection = data.data;
-      //  console.log(this.OpinionsSection);
+        //  console.log(this.OpinionsSection);
       });
     },
   },
-  created(){
+  created() {
     this.fetch_opnion_data();
-  }
+  },
 };
 </script>
 
@@ -130,7 +133,7 @@ export default {
         .img {
           position: absolute;
           top: -30px;
-           border-radius: 50%;
+          border-radius: 50%;
           left: 36%;
           width: 80px;
           height: 80px;
@@ -191,13 +194,11 @@ export default {
     font-size: 1rem;
   }
 
-  .testmonlies .content .swiper .card{
+  .testmonlies .content .swiper .card {
     margin-top: 7%;
-
   }
- .testmonlies .content .swiper .card .quete{
+  .testmonlies .content .swiper .card .quete {
     padding: 15% 0 3%;
-
   }
 }
 </style>

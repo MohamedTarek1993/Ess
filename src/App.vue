@@ -8,10 +8,10 @@
 </template>
 
 <script>
-  import { onMounted } from "vue";
+import { onMounted } from "vue";
 import AOS from "aos";
 onMounted(() => {
-    AOS.init();
+  AOS.init();
 });
 import buttonTop from "./view/components/static/buttonTop.vue";
 import Navbar from "./view/components/static/Navbar.vue";
@@ -203,7 +203,7 @@ p {
     border-radius: 2px;
     padding-right: 6%;
     background-color: transparent;
-    color:var(--color-primary);
+    color: var(--color-primary);
     font-family: "regular";
     &:focus {
       box-shadow: none !important;
@@ -371,7 +371,6 @@ input {
     font-size: 1.4rem;
     text-align: center;
     padding: 0 12%;
-
   }
 }
 .button {
@@ -422,10 +421,10 @@ input {
 .sr-only {
   display: none !important;
 }
-.page-item{
+.page-item {
   margin-inline-end: 2% !important;
-  .page-link{
- color: var(--color-secound) !important;
+  .page-link {
+    color: var(--color-secound) !important;
     border-color: var(--color-secound) !important;
   }
 }
@@ -436,13 +435,69 @@ input {
     color: var(--color-white);
   }
 }
+.service_section {
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      width: 17px !important;
+      height: 3px !important;
+      border-radius: 3px !important;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+  }
+}
+.team_section {
+  .swiper {
+    .swiper-button-prev,
+    .swiper-button-next{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba($color: #000000, $alpha: 0.3);
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      transition: .25s all ease-in-out;
+      &::after{
+        opacity: 0;
+        display: none;
+      }
+      &:hover{
+        background: var(--color-white);
+        i{
+          color: var(--color-secound);
+        }
+      }
+      i{
+        color: var(--color-white);
+        font-size: 2rem;
+        transition: .25s all ease-in-out;
 
-@media (max-width: 991.98px){
+      }
+     
+    }
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        width: 17px !important;
+        height: 3px !important;
+        border-radius: 3px !important;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+      }
+    }
+  }
+}
+@media (max-width: 991.98px) {
   header {
     .mobile-menu {
       top: 2% !important;
       i {
-        padding: .1rem .3rem !important;
+        padding: 0.1rem 0.3rem !important;
       }
     }
   }

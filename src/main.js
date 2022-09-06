@@ -4,8 +4,6 @@ import router from './routers.js';
 // Import Bootstrap an BootstrapVue CSS files
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
-// importing AOS css style globally
-// import 'aos/dist/aos.css'
 import { createI18n } from 'vue-i18n'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
@@ -13,8 +11,6 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import FlagIcon from 'vue-flag-icon'
-
-
 
 function loadLocaleMessages() {
   const locales = require.context(
@@ -42,23 +38,6 @@ const i18n = createI18n({
   fallbackLocale: lang, // set fallback locale
   messages: loadLocaleMessages(), // set locale messages
 });
-
-
-// const router = new VueRouter({
-  //   mode: "history",
-  //   routes: routes,
-  //   scrollBehavior: function (to, from, savedPosition) {
-    //     if (to.hash) {
-      //       return {
-//         selector: to.hash,
-//       };
-//     } else if (savedPosition) {
-//       return savedPosition;
-//     }
-//     return { x: 0, y: 0 };
-//   },
-// });
-
 const app = createApp(App);
 // axios baseurl
 axios.defaults.baseURL = 'https://ess.crazyideaco.com/public/api';

@@ -26,28 +26,24 @@
           <img :src="DetailsProjects.image_header" alt="project" />
         </div>
         <h1>{{ DetailsProjects.title }}</h1>
-        <p v-html ="DetailsProjects.text"></p>
+        <p v-html="DetailsProjects.text"></p>
       </div>
       <swiper
-        :slidesPerView="3"
-        :spaceBetween="10"
         :loop="true"
         :autoplay="{
           delay: 2500,
           disableOnInteraction: false,
         }"
-        :pagination="{
-          clickable: true,
-        }"
         :breakpoints="{
-          '375': {
+          '320': {
             slidesPerView: 1,
             spaceBetween: 20,
           },
-          '640': {
+          '425': {
             slidesPerView: 2,
             spaceBetween: 20,
           },
+         
           '768': {
             slidesPerView: 3,
             spaceBetween: 40,
@@ -82,8 +78,9 @@
               <ul>
                 <li>
                   {{ $t("Start Date") }} -
-                  <span>{{ formatDate(DetailsProjects.project_details.start_date )}}</span>
-                   
+                  <span>{{
+                    formatDate(DetailsProjects.project_details.start_date)
+                  }}</span>
                 </li>
                 <li>
                   {{ $t("Project Duration") }} -
@@ -127,16 +124,13 @@
 </template>
 
 <script>
-import axios from "axios";
-import moment from "moment";
-
-
+  import moment from "moment";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
-
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
-
+import "swiper/css";
+import axios from "axios";
+import { Autoplay } from "swiper";
 import Together from "../components/static/Together.vue";
 
 export default {
@@ -149,7 +143,15 @@ export default {
   data() {
     return {
       DetailsProjects: {
+        project_details: {
+          start_date: null
+        }
       },
+    };
+  },
+  setup() {
+    return {
+      modules: [Autoplay],
     };
   },
   methods: {
@@ -304,10 +306,10 @@ export default {
     width: 70%;
     height: 330px;
   }
-  .single_project .mySwiper .img{
+  .single_project .mySwiper .img {
     height: 260px;
   }
-  .single_project .lower_content .card_box{
+  .single_project .lower_content .card_box {
     width: 100%;
   }
 }
@@ -330,7 +332,6 @@ export default {
   }
   .single_project .lower_content .ditals_img {
     height: 270px;
-
   }
 }
 </style>

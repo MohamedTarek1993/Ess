@@ -75,6 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 .blog_section {
+  padding: 5% 0;
   .main-title-center {
     p {
       text-align: center;

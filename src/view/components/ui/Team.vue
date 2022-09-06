@@ -1,15 +1,18 @@
 <template>
-  <section class="team_section" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
+  <section
+    class="team_section"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+    data-aos-easing="linear"
+  >
     <div class="container">
       <div class="main-title-center">
-        <span>{{$t("Our Team")}}</span>
+        <span>{{ $t("Our Team") }}</span>
         <h2>{{ TeamSection.title }}</h2>
         <p>{{ TeamSection.text }}</p>
       </div>
 
       <swiper
-        :slidesPerView="4"
-        :spaceBetween="30"
         :loop="true"
         :autoplay="{
           delay: 2500,
@@ -18,6 +21,7 @@
         :pagination="{
           clickable: true,
         }"
+        :navigation="true"
         :breakpoints="{
           '320': {
             slidesPerView: 1,
@@ -32,6 +36,7 @@
             spaceBetween: 30,
           },
         }"
+        :modules="modules"
         class="swiper"
       >
         <swiper-slide v-for="(team, index) in TeamSection.teams" :key="index">
@@ -69,6 +74,9 @@
             </div>
           </div>
         </swiper-slide>
+        <div class="swiper-button-prev"><i class="bi bi-chevron-left"></i></div>
+        <div class="swiper-button-next"><i class="bi bi-chevron-right"></i></div>
+
       </swiper>
     </div>
   </section>
@@ -79,9 +87,13 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 //import axios
 import axios from "axios";
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper";
 export default {
   name: "Team",
   components: {
@@ -93,19 +105,24 @@ export default {
       TeamSection: {},
     };
   },
-   methods: {
-   fetch_team_data() {
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
+  },
+  methods: {
+    fetch_team_data() {
       const newLocal = this.$i18n.locale;
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.get("/v1/dashboard/teamSection").then(({ data }) => {
         this.TeamSection = data.data;
-         console.log(this.TeamSection);
+        console.log(this.TeamSection);
       });
     },
   },
-  created(){
+  created() {
     this.fetch_team_data();
-  }
+  },
 };
 </script>
 
@@ -205,8 +222,8 @@ export default {
             transform: translateY(0);
             transition-delay: 0.5s;
           }
-          ul{
-              opacity: 1;
+          ul {
+            opacity: 1;
             transform: translateY(0);
             transition-delay: 0.5s;
           }
@@ -215,10 +232,10 @@ export default {
     }
   }
 }
-@media (max-width: 1023.98px){
-  .team_section .swiper .card .img{
-      width: 216px;
-    height: 267px
+@media (max-width: 1023.98px) {
+  .team_section .swiper .card .img {
+    width: 216px;
+    height: 267px;
   }
 }
 </style>

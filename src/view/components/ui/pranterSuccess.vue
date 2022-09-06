@@ -1,18 +1,19 @@
 <template>
-  <section class="pranter" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="linear">
+  <section
+    class="pranter"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+    data-aos-easing="linear"
+  >
     <div class="container">
       <h2>{{ $t("paranter_title") }}</h2>
       <swiper
-        :slidesPerView="5"
-        :spaceBetween="10"
-        :loop="true"
+      :loop="true"
         :autoplay="{
           delay: 2500,
           disableOnInteraction: false,
         }"
-        :pagination="{
-          clickable: true,
-        }"
+       
         :breakpoints="{
           '320': {
             slidesPerView: 2,
@@ -24,11 +25,11 @@
           },
           '768': {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween: 30,
           },
           '1024': {
-            slidesPerView: 5,
-            spaceBetween: 50,
+            slidesPerView: 4,
+            spaceBetween: 30,
           },
         }"
         :modules="modules"
@@ -49,9 +50,12 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
+import "swiper/css";
+
+
 //import axios
 import axios from "axios";
+import { Autoplay } from "swiper";
 
 export default {
   name: "pranterSuccess",
@@ -62,6 +66,11 @@ export default {
   data() {
     return {
       Partners: [],
+    };
+  },
+  setup() {
+    return {
+      modules: [Autoplay],
     };
   },
   methods: {
@@ -105,5 +114,4 @@ export default {
     height: 101px;
   }
 }
-
 </style>
