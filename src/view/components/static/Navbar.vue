@@ -338,10 +338,6 @@ export default {
 /* hamburger icon */
 .navbar .navbar-toggler {
   cursor: pointer;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center; */
   border: 1px solid var(--color-white);
   width: 1.8em !important;
   height: 1.8em !important;
