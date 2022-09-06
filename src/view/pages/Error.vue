@@ -2,6 +2,8 @@
   <section class="not_found">
     <div class="container w-75">
         <h2>{{$t('errer_title')}}</h2>
+
+
         <img src="../../assets/image/404.webp" alt="error">
         <p>{{$t('errer_text')}}</p>
         <router-link class="first btn" :to="{ name: 'Home' }" >{{$t('error_link')}}</router-link>
