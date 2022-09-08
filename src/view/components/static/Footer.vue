@@ -147,7 +147,14 @@
         <p>All copyright reserved@ESS 2022</p>
       </div>
       <div class="right_slide">
-        Made With by <a href="https://crazyideaco.com">crazy idea</a>
+        Made With
+        <img
+          class="my-heart"
+          src="../../../assets/image/heart.svg"
+          alt="icon heart"
+        />
+        by
+        <a href="https://crazyideaco.com">crazy idea</a>
         <br />
         Think Out of the box
       </div>
@@ -211,6 +218,9 @@ footer {
   background-color: var(--color-secound);
   margin-top: 2%;
   padding: 3% 0 1%;
+  .my-heart {
+    animation: hvr-pulse 0.3s infinite;
+  }
   .logo {
     width: 8.125rem;
     height: 3.313rem;
@@ -261,13 +271,13 @@ footer {
       flex-direction: row;
       p {
         &:first-child {
-          // width: 30%;
+          width: 30%;
           font-size: 0.8rem;
           color: var(--color-white);
           font-family: "bold";
         }
         &:last-child {
-          // width: 70%;
+          width: 70%;
           display: flex;
           justify-content: start;
           align-items: flex-start;

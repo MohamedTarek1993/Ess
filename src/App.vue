@@ -1,6 +1,7 @@
 <template>
   <section>
     <button-top />
+    <div id="preloader"></div>
     <Navbar />
     <router-view />
     <Footer />
@@ -24,6 +25,12 @@ export default {
     buttonTop,
     Navbar,
     Footer,
+  },
+  mounted() {
+   
+
+ 
+
   },
 };
 </script>
@@ -398,6 +405,19 @@ input {
       border-top-left-radius: 0px;
     }
   }
+  #preloader {
+  background-image: url(../src/assets/image/loader.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #fff;
+  background-size: 15%;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 1100;
+}
+
   .primary {
     background-color: var(--color-white);
     font-family: "semibold";

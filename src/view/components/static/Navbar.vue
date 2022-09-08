@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <router-link :to="{ name: 'Home' }" class="nav-link active">
+            <router-link :to="{ name: 'Home' }" class="nav-link">
               {{ $t("home") }}</router-link
             >
           </li>
@@ -210,26 +210,10 @@ export default {
     };
   },
   created() {
-    // window.addEventListener("resize", this.checkScreen);
-    // this.checkScreen();
-    // changeLocale(locale)
     const html = document.documentElement; // returns the html tag
     html.setAttribute("lang", this.$i18n.locale);
   },
   methods: {
-    // checkScreen() {
-    //   this.windowWidth = window.innerWidth;
-    //   if (this.windowWidth <= 1023) {
-    //     this.mobile = true;
-    //     return;
-    //   }
-    //   this.mobile = false;
-    //   this.mobileNav = false;
-    // },
-    // showMenu() {
-    //   this.mobileNav = !this.mobileNav;
-    // },
-
     changeLocale(locale) {
       this.$i18n.locale = locale;
       const html = document.documentElement; // returns the html tag
@@ -238,7 +222,7 @@ export default {
       location.reload();
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -247,7 +231,7 @@ export default {
 .navbar {
   background-color: var(--color-primary);
   z-index: 100;
-   
+
   transition: 0.25s all ease-in-out;
 
   .navbar-brand {
@@ -303,7 +287,7 @@ export default {
         font-size: 1rem;
         font-family: "regular";
         color: var(--color-white);
-        i{
+        i {
           margin-inline-end: 17%;
           font-size: 1.5rem;
         }
