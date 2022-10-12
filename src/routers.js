@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../src/view/pages/Home.vue";
 import About from "../src/view/pages/About.vue";
 import Projects from "../src/view/pages/Projects.vue";
+import Liberary from "../src/view/pages/Liberary.vue";
+import Services from "../src/view/pages/Services.vue";
 import Blogs from "../src/view/pages/Blogs.vue";
 import Blog from "../src/view/pages/Blog.vue";
 import Contact from "../src/view/pages/Contact.vue";
@@ -37,6 +39,22 @@ const routes = [
         component: Projects,
         meta: {
             title: "Projects",
+        }
+    },
+    {
+        path: "/liberary",
+        name: "Liberary",
+        component: Liberary,
+        meta: {
+            title: "Liberary",
+        }
+    },
+    {
+        path: "/services",
+        name: "Services",
+        component: Services,
+        meta: {
+            title: "Services",
         }
     },
     {

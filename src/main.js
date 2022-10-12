@@ -11,6 +11,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import FlagIcon from 'vue-flag-icon'
+import VueEasyLightbox from 'vue-easy-lightbox/dist/external-css/vue-easy-lightbox.esm.min.js'
+
 
 function loadLocaleMessages() {
   const locales = require.context(
@@ -47,4 +49,5 @@ app.use(VueSweetalert2);
 app.use(i18n);
 app.use(FlagIcon);
 app.use(AOS.init());
+app.use(VueEasyLightbox) // global variable
 app.mount('#app');

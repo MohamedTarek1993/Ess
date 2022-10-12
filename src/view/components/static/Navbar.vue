@@ -40,6 +40,16 @@
             >
           </li>
           <li class="nav-item">
+            <router-link :to="{ name: 'Liberary' }" class="nav-link">
+              {{ $t("liberary") }}</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'Services' }" class="nav-link">
+              {{ $t("Services") }}</router-link
+            >
+          </li>
+          <li class="nav-item">
             <router-link :to="{ name: 'Contact' }" class="nav-link">
               {{ $t("contact") }}
             </router-link>

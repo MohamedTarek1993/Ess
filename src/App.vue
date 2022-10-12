@@ -1,7 +1,7 @@
 <template>
   <section>
+    <PageLoader />
     <button-top />
-    <div id="preloader"></div>
     <Navbar />
     <router-view />
     <Footer />
@@ -17,6 +17,7 @@ onMounted(() => {
 import buttonTop from "./view/components/static/buttonTop.vue";
 import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
+import PageLoader from "./view/components/static/pageLoader.vue";
 require("./assets/scss/style.min.css");
 
 export default {
@@ -25,8 +26,11 @@ export default {
     buttonTop,
     Navbar,
     Footer,
-  },
-  mounted() {
+    PageLoader
+},
+  mounted(
+    
+  ) {
    
 
  
