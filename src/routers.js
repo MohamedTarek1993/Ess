@@ -11,6 +11,7 @@ import Contact from "../src/view/pages/Contact.vue";
 import Faq from "../src/view/pages/Faq.vue";
 import Privacy from "../src/view/pages/Privacy.vue";
 import Terms from "../src/view/pages/Terms.vue";
+import test from "../src/view/pages/test.vue";
 import Error from "../src/view/pages/Error.vue";
 import Project from "../src/view/pages/Project.vue";
 
@@ -105,6 +106,15 @@ const routes = [
             title: "Terms",
         }
     },
+    {
+        path: "/test",
+        name: "test",
+        component: test,
+        meta: {
+            title: "test",
+        }
+    },
+
 
     {
         path: "/project/:id",

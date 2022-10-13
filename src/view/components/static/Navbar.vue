@@ -263,7 +263,7 @@ export default {
         .nav-link {
           font-size: 1.2rem;
           font-family: "regular";
-          color: var(--color-white);
+          color: #CAD6D0;
           padding-left: 1.5rem;
           padding-right: 1.5rem;
           position: relative;
@@ -271,19 +271,17 @@ export default {
           z-index: 1;
           transition: 0.25s all;
           &:hover {
-            color: var(--color-text);
-            border-bottom: 1px solid white;
+            color: #fff;
           }
         }
         .nav-link.active {
-          color: var(--color-text);
+          color: #fff;
           font-family: "bold";
           transition: 0.25s all ease-in-out;
           border-bottom: 1px solid var(--color-text);
 
           &:hover {
-            color: var(--color-white);
-            border-bottom: 1px solid white;
+            color: #fff;
           }
         }
       }

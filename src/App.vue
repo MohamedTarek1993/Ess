@@ -119,6 +119,7 @@ body {
   list-style: none;
   direction: ltr;
   height: 100vh;
+  overflow-y: auto !important;
 }
 html {
   scroll-behavior: smooth;
@@ -456,7 +457,7 @@ input {
   .page-link {
     background-color: var(--color-primary) !important;
     border-color: var(--color-primary) !important;
-    color: var(--color-white);
+    color: var(--color-white) !important;
   }
 }
 .service_section {

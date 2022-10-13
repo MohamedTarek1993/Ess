@@ -271,13 +271,13 @@ footer {
       flex-direction: row;
       p {
         &:first-child {
-          width: 30%;
+          width: 35%;
           font-size: 0.8rem;
           color: var(--color-white);
           font-family: "bold";
         }
         &:last-child {
-          width: 70%;
+          width: 65%;
           display: flex;
           justify-content: start;
           align-items: flex-start;
