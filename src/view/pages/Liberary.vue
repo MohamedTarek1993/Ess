@@ -13,8 +13,8 @@
       <div class="row">
         <div
           class="col-lg-6 col-md-6 col-12"
-          v-for="(data, index) in libraryList"
-          :key="index"
+          v-for="(data, list) in libraryList"
+          :key="list"
         >
           <swiper
             :style="{
@@ -27,15 +27,17 @@
             :thumbs="{ swiper: thumbsSwiper }"
             class="mySwiper2"
           >
+            <!-- @click="showMultiple" -->
             <swiper-slide
-              @click="showMultiple"
-              v-for="(libraryList, index) in data.libraryList"
-              :key="index"
+              v-for="media in data.libraryList"
+              :key="media.id"
+              data-bs-toggle="modal"
+              :data-bs-target="'#exampleModal' + data.id"
             >
-              <img v-if="libraryList.type == 'image'" :src="libraryList.url" />
+              <img v-if="media.type == 'image'" :src="media.src" />
               <video
-                v-else-if="libraryList.type == 'video'"
-                :src="libraryList.url"
+                v-else-if="media.type == 'video'"
+                :src="media.src"
                 controls
                 muted
               ></video>
@@ -54,23 +56,11 @@
             :watchSlidesProgress="true"
             class="mySwiper"
           >
-            <swiper-slide
-              v-for="(libraryList, index) in data.libraryList"
-              :key="index"
-            >
-              <img v-if="libraryList.type == 'image'" :src="libraryList.url" />
-              <video
-                v-else-if="libraryList.type == 'video'"
-                :src="libraryList.url"
-              ></video>
+            <swiper-slide v-for="media in data.libraryList" :key="media.id">
+              <img v-if="media.type == 'image'" :src="media.src" />
+              <video v-else-if="media.type == 'video'" :src="media.src"></video>
             </swiper-slide>
           </swiper>
-          <vue-easy-lightbox
-            :visible="visibleRef"
-            :imgs="images"
-            :index="indexRef"
-            @hide="onHide"
-          ></vue-easy-lightbox>
         </div>
       </div>
       <div class="row mt-5">
@@ -91,7 +81,55 @@
       </div>
     </div>
   </section>
-  <light-box />
+  <div class="lightboxhwhw" v-for="(data, list) in libraryList" :key="list">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      :id="'exampleModal' + data.id"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <swiper
+              :style="{
+                '--swiper-navigation-color': '#fff',
+                '--swiper-pagination-color': '#fff',
+              }"
+              :loop="true"
+              :spaceBetween="10"
+              :navigation="true"
+              class="mySwiper2"
+            >
+              <swiper-slide v-for="media in data.libraryList" :key="media.id">
+                <img v-if="media.type == 'image'" :src="media.src" />
+                <video
+                  v-else-if="media.type == 'video'"
+                  :src="media.src"
+                  controls
+                  muted
+                ></video>
+                <!-- <div class="text">
+                <h2>{{data.title}}</h2>
+                <p v-html="data.text"></p>
+              </div> -->
+              </swiper-slide>
+            </swiper>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -133,18 +171,6 @@ export default {
       thumbsSwiper: null,
       library: [],
       libraryList: [],
-      images: [
-        "https://placekitten.com/801/800",
-        "https://placekitten.com/802/800",
-        "https://placekitten.com/803/800",
-        "https://placekitten.com/804/800",
-        "https://placekitten.com/805/800",
-        "https://placekitten.com/806/800",
-        "https://placekitten.com/807/800",
-        "https://placekitten.com/808/800",
-        "https://placekitten.com/809/800",
-        "https://placekitten.com/810/800",
-      ],
     };
   },
   methods: {
@@ -157,7 +183,7 @@ export default {
       axios.get("/v1/dashboard/library_page?page=" + page).then(({ data }) => {
         this.library = data.data;
         this.libraryList = data.data.libraries.data;
-        console.log(this.libraryList);
+        // console.log(this.libraryList);
       });
     },
   },
@@ -175,8 +201,8 @@ export default {
     };
 
     const showMultiple = () => {
-      imgsRef.value = [];
-      indexRef.value = 0; // index of imgList
+      imgsRef().value = [];
+      indexRef().value = 0; // index of imgList
       onShow();
     };
     const onHide = () => (visibleRef.value = false);
@@ -202,6 +228,7 @@ export default {
     video {
       width: 100%;
       height: 400px;
+      cursor: pointer;
     }
   }
   .mySwiper {
