@@ -40,8 +40,8 @@
             >
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'Liberary' }" class="nav-link">
-              {{ $t("liberary") }}</router-link
+            <router-link :to="{ name: 'library' }" class="nav-link">
+              {{ $t("library") }}</router-link
             >
           </li>
           <li class="nav-item">

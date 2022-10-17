@@ -97,6 +97,14 @@ body:lang(ar) {
       }
     }
   }
+  .library_section {
+    .swiper {
+      padding: 0;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+      color: #000;
+    }
+  }
 }
 
 // lang en

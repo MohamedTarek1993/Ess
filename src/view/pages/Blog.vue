@@ -58,7 +58,7 @@ export default {
       axios.defaults.headers.common["Accept-Language"] = newLocal;
       axios.post("/v1/dashboard/detailsBlog", id).then(({ data }) => {
         this.DetailsBlogs = data.data;
-        console.log("DetailsBlogs: " + this.DetailsBlogs);
+        // console.log("DetailsBlogs: " + this.DetailsBlogs);
       });
     },
 

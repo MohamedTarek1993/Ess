@@ -19,6 +19,7 @@ import Navbar from "./view/components/static/Navbar.vue";
 import Footer from "./view/components/static/Footer.vue";
 import PageLoader from "./view/components/static/pageLoader.vue";
 require("./assets/scss/style.min.css");
+require('vue-it-bigger/dist/vue-it-bigger.min.css')
 
 export default {
   name: "app",
