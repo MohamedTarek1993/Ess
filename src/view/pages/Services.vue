@@ -90,7 +90,7 @@ export default {
     .card {
     padding:  2%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-content: center;
     text-align: center;
     flex-direction: column;
@@ -114,7 +114,7 @@ export default {
       background-color: var(--color-primary);
       border-radius: 50%;
       padding: 2%;
-      margin: auto;
+      margin: 0 auto;
       img {
         width: 30px;
         height: 30px;
